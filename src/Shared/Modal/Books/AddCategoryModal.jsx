@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import { useForm } from 'react-hook-form';
-import { FaUser } from 'react-icons/fa';
+import Swal from "sweetalert2";
+import { createCategoryUrl } from '@/src/Utils/Urls/BooksUrl';
+import useBook from '@/src/Hooks/useBook';
 
 const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
   const {
@@ -10,20 +12,75 @@ const AddCategoryModal = ({ isCategoryModalOpen, setIsCategoryModalOpen }) => {
     formState: { errors },
   } = useForm();
 
-  const handleOk = () => {
-    setIsCategoryModalOpen(false);
-  };
+  const {refetchCategory} = useBook()
+
   const handleCancel = () => {
     setIsCategoryModalOpen(false);
   };
 
   const onSubmit = async (data) => {
     console.log(data);
+    const res = await fetch(createCategoryUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        category: data.category,
+      }),
+    });
+
+    console.log(res);
+
+    const dataRes = await res.json();
+    console.log(dataRes);
+
+    if (!dataRes) {
+      Swal.fire({
+        position: "center",
+        timerProgressBar: true,
+        title: "Somthing wento wrang !",
+        iconColor: "#ED1C24",
+        toast: true,
+        icon: "error",
+        showClass: {
+          popup: "animate__animated animate__fadeInRight",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutRight",
+        },
+        showConfirmButton: false,
+        timer: 3500,
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        timerProgressBar: true,
+        title: "Successfully Product Added!",
+        iconColor: "#ED1C24",
+        toast: true,
+        icon: "success",
+        showClass: {
+          popup: "animate__animated animate__fadeInRight",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutRight",
+        },
+        showConfirmButton: false,
+        timer: 3500,
+      });
+      refetchCategory();
+    }
+
   }
 
 
   return (
-    <Modal title="Add Category" open={isCategoryModalOpen} onCancel={handleCancel}>
+    <Modal title="Add Category" 
+    open={isCategoryModalOpen} 
+    onCancel={handleCancel}
+    okButtonProps={{ style: { display: 'none' } }} 
+    >
       <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">

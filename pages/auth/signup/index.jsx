@@ -28,14 +28,41 @@ const Index = () => {
   const { signUp, updateUserDetails, signInWithGoogle } =
     useContext(AuthContext);
 
-  const handleGoogleSingnIn = () => {
+  const saveUserDataToDatabase = async (userData) => {
+    try {
+      const response = await axios.post(signupUrl, userData);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error saving user data:", error);
+      throw error;
+    }
+  };
+
+  const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then(() => {
+      .then(async (userCredential) => {
+        // Successfully signed in with Google
+        const user = userCredential.user;
+
+        // Extract user data from the Google sign-in response
+        const userData = {
+          name: user.displayName,
+          email: user.email,
+          phone: user.phoneNumber || "",
+          role: 'user', // You can set the user's role here
+        };
+
+        // Save user data to the database
+        await saveUserDataToDatabase(userData);
+
+        // Redirect to the home page
         router.push("/");
+
+        // Show a success toast notification
         Swal.fire({
           position: "top-end",
           timerProgressBar: true,
-          title: "Successfully Login!",
+          title: "Successfully Logged In!",
           iconColor: "#ED1C24",
           toast: true,
           icon: "success",
@@ -52,12 +79,44 @@ const Index = () => {
       .catch((error) => {
         Swal.fire({
           icon: "error",
-          title: error.message,
+          title: error.message || "Google Sign-In Error",
           text: "User already registered!",
           confirmButtonColor: "#ED1C24",
         });
       });
   };
+
+
+  // const handleGoogleSingnIn = () => {
+  //   signInWithGoogle()
+  //     .then(() => {
+  //       router.push("/");
+  //       Swal.fire({
+  //         position: "top-end",
+  //         timerProgressBar: true,
+  //         title: "Successfully Login!",
+  //         iconColor: "#ED1C24",
+  //         toast: true,
+  //         icon: "success",
+  //         showClass: {
+  //           popup: "animate__animated animate__fadeInRight",
+  //         },
+  //         hideClass: {
+  //           popup: "animate__animated animate__fadeOutRight",
+  //         },
+  //         showConfirmButton: false,
+  //         timer: 3500,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: error.message,
+  //         text: "User already registered!",
+  //         confirmButtonColor: "#ED1C24",
+  //       });
+  //     });
+  // };
 
   const signUpHandler = async (dataValue) => {
     const role = "user";
@@ -66,7 +125,7 @@ const Index = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential?.user;
-  
+
         const profileInfo = {
           displayName: firstName + lastName,
           phoneNumber: phone,
@@ -135,117 +194,117 @@ const Index = () => {
 
   return (
     <RootLayout>
-        <div className="md:px-16 container">
-          <div className="">
-            <div className="w-full bg-white md:py-20 md:px-16  flex justify-center items-center md:flex-row flex-col gap-6">
-              <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6  w-full p-4">
-                <div className="xxs:px-[25px] xs:px-[30px] sm:px-[30px] md:px-[30px] lg:px-[28px] xl:px-[40px] py-10  bg-[#f7f7f7] shadow-md rounded-lg">
-                  <h4 className="xs:text-2xl xxs:text-md sm:text-3xl md:text-3xl">
-                    Account details
-                  </h4>
-                  <p className="mt-4 text-[15px] text-[#676767] font-[400]">
-                    You only need to answer a few straightforward questions.
-                  </p>
-                  <form onSubmit={handleSubmit(signUpHandler)}>
-                    <div className="flex flex-col gap-4">
-                      <div>
-                        <input
-                          text="text"
-                          name="firstName"
-                          placeholder="First name"
-                          className="text-[15px] font-[500] shadow-md rounded-lg px-2.5 py-4 text-gray-700 leading-tight w-full focus:outline-none focus:shadow-outline"
-                          {...register("firstName")}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          text="text"
-                          name="lastName"
-                          placeholder="Last name"
-                          className="text-[15px] font-[500]  shadow-md rounded-lg px-2.5 py-4 w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          defaultValue=""
-                          {...register("lastName")}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          text="text"
-                          name="phone"
-                          placeholder="Phone number"
-                          className="text-[15px] w-full font-[500] shadow-md rounded-lg px-2.5 py-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          {...register("phone")}
-                        />
-                      </div>
+      <div className="md:px-16 container">
+        <div className="">
+          <div className="w-full bg-white md:py-20 md:px-16  flex justify-center items-center md:flex-row flex-col gap-6">
+            <div className="shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-6  w-full p-4">
+              <div className="xxs:px-[25px] xs:px-[30px] sm:px-[30px] md:px-[30px] lg:px-[28px] xl:px-[40px] py-10  bg-[#f7f7f7] shadow-md rounded-lg">
+                <h4 className="xs:text-2xl xxs:text-md sm:text-3xl md:text-3xl">
+                  Account details
+                </h4>
+                <p className="mt-4 text-[15px] text-[#676767] font-[400]">
+                  You only need to answer a few straightforward questions.
+                </p>
+                <form onSubmit={handleSubmit(signUpHandler)}>
+                  <div className="flex flex-col gap-4">
+                    <div>
                       <input
-                        text="email"
-                        name="email"
-                        placeholder="Email address"
-                        className="text-[15px] font-[500] rounded-lg w-full px-2.5 py-4 text-gray-700 leading-tight focus:outline-none mb-4 shadow-md focus:shadow-outline"
-                        {...register("email")}
-                        required
+                        text="text"
+                        name="firstName"
+                        placeholder="First name"
+                        className="text-[15px] font-[500] shadow-md rounded-lg px-2.5 py-4 text-gray-700 leading-tight w-full focus:outline-none focus:shadow-outline"
+                        {...register("firstName")}
                       />
                     </div>
-                    <div className="flex flex-col gap-4">
-                      <div className="relative mb-6">
-                        <input
-                          name="password"
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Password"
-                          className="text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md px-2.5 py-4 "
-                          {...register("password")}
-                        />
-                        <span
-                          className="text-[#6b7280] text-[20px] absolute  top-[18px] inset-y-0 right-0 pr-3 flex "
-                          onClick={passwordVisible}
-                        >
-                          {showPassword ? (
-                            <AiOutlineEye />
-                          ) : (
-                            <AiOutlineEyeInvisible />
-                          )}
-                        </span>
-                      </div>
-                      <div className="relative mb-6">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          name="confirmPassword"
-                          placeholder="Confirm password"
-                          className="text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md px-2.5 py-4 "
-                          {...register("confirmPassword")}
-                        />
-                        <span
-                          className="text-[#6b7280] text-[20px] absolute   top-[18px] inset-y-0 right-0 pr-3 flex "
-                          onClick={cPasswordVisible}
-                        >
-                          {showCPassword ? (
-                            <AiOutlineEye />
-                          ) : (
-                            <AiOutlineEyeInvisible />
-                          )}
-                        </span>
-                      </div>
+                    <div>
+                      <input
+                        text="text"
+                        name="lastName"
+                        placeholder="Last name"
+                        className="text-[15px] font-[500]  shadow-md rounded-lg px-2.5 py-4 w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        defaultValue=""
+                        {...register("lastName")}
+                      />
                     </div>
-                    <div className="flex flex-col gap-2 ">
-                      <div className="flex items-center mb-2 sm:col-span-6 xxs:col-span-12 sm:justify-start xxs:justify-center">
-                        <p className="text-base text-normal">
-                          Have already an account?{" "}
-                          <Link href="/auth/login">
-                            <b className="text-red-10">Login here</b>
-                          </Link>
-                        </p>
-                      </div>
-                      <div className="flex sm:col-span-6 xxs:col-span-12  xxs:justify-center">
-                        <button className="uppercase common-btn ">
-                          Sign up
-                        </button>
-                      </div>
+                    <div>
+                      <input
+                        text="text"
+                        name="phone"
+                        placeholder="Phone number"
+                        className="text-[15px] w-full font-[500] shadow-md rounded-lg px-2.5 py-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        {...register("phone")}
+                      />
                     </div>
-                  </form>
+                    <input
+                      text="email"
+                      name="email"
+                      placeholder="Email address"
+                      className="text-[15px] font-[500] rounded-lg w-full px-2.5 py-4 text-gray-700 leading-tight focus:outline-none mb-4 shadow-md focus:shadow-outline"
+                      {...register("email")}
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <div className="relative mb-6">
+                      <input
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        className="text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md px-2.5 py-4 "
+                        {...register("password")}
+                      />
+                      <span
+                        className="text-[#6b7280] text-[20px] absolute  top-[18px] inset-y-0 right-0 pr-3 flex "
+                        onClick={passwordVisible}
+                      >
+                        {showPassword ? (
+                          <AiOutlineEye />
+                        ) : (
+                          <AiOutlineEyeInvisible />
+                        )}
+                      </span>
+                    </div>
+                    <div className="relative mb-6">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        placeholder="Confirm password"
+                        className="text-[15px] font-[500] text-gray-700 outline-none w-full rounded-lg shadow-md px-2.5 py-4 "
+                        {...register("confirmPassword")}
+                      />
+                      <span
+                        className="text-[#6b7280] text-[20px] absolute   top-[18px] inset-y-0 right-0 pr-3 flex "
+                        onClick={cPasswordVisible}
+                      >
+                        {showCPassword ? (
+                          <AiOutlineEye />
+                        ) : (
+                          <AiOutlineEyeInvisible />
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 ">
+                    <div className="flex items-center mb-2 sm:col-span-6 xxs:col-span-12 sm:justify-start xxs:justify-center">
+                      <p className="text-base text-normal">
+                        Have already an account?{" "}
+                        <Link href="/auth/login">
+                          <b className="text-red-10">Login here</b>
+                        </Link>
+                      </p>
+                    </div>
+                    <div className="flex sm:col-span-6 xxs:col-span-12  xxs:justify-center">
+                      <button className="uppercase common-btn ">
+                        Sign up
+                      </button>
+                    </div>
+                  </div>
+                </form>
 
-                  <div className="social-login md:w-[50%] flex mx-auto">
+                <div className="social-login md:w-[50%] flex mx-auto">
                   <div
                     className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer"
-                    onClick={()=>handleGoogleSingnIn()}
+                    onClick={() => handleGoogleSingnIn()}
                   >
                     <div className="px-4 py-2">
                       <svg className="w-10 h-10" viewBox="0 0 40 40">
@@ -272,12 +331,12 @@ const Index = () => {
                     </span>
                   </div>
 
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </RootLayout>
   );
 };

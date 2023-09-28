@@ -11,18 +11,16 @@ import {
   FaCalendarAlt,
   FaDiceD6,
   FaPowerOff,
-  FaQuestionCircle,
   FaRegClock,
-  FaRegSun,
   FaThLarge,
 } from "react-icons/fa";
 import { AiOutlineIdcard } from "react-icons/ai";
 const { Header, Sider, Content } = Layout;
 
-const DashboardLayout = ({children}) => {
-  const {handleLogout} =useCommonApiData()
+const DashboardLayout = ({ children }) => {
+  const { handleLogout } = useCommonApiData()
   const [collapsed, setCollapsed] = useState(false); // Start with the sidebar open on desktop devices
-  const [sideNavVisible, setSideNavVisible] = useState(false); 
+  const [sideNavVisible, setSideNavVisible] = useState(false);
   const handleResize = () => {
     setCollapsed(window.innerWidth < 768);
     // Hide the sidebar on mobile devices by default
@@ -65,16 +63,21 @@ const DashboardLayout = ({children}) => {
           collapsible
           collapsed={collapsed}
           className="text-white"
-          style={{ position: "sticky", top: 0, height: "100vh" }}
+          style={{
+            position: "sticky", top: 0, height: "100vh",
+            zIndex: 999
+
+          }}
         >
-  
+
 
           <Menu
             theme="dark"
             mode="inline"
             defaultSelectedKeys={["2"]}
-            className="text-white "
-          >  
+            className="text-white"
+            style={{ height: "100%", width: "100%" }}
+          >
             <Menu.Item key="1" icon={<FaThLarge />}>
               <Link href="/">Home</Link>
             </Menu.Item>
@@ -88,17 +91,17 @@ const DashboardLayout = ({children}) => {
               <Link href="/dashboard/category">Category</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<FaDiceD6 />}>
-              <Link href="/dashboard/coupon">Coupon</Link>
+              <Link href="/dashboard/copuon">Coupon</Link>
             </Menu.Item>
             <Menu.Item key="6" icon={<FaRegClock />}>
-              <Link href="/dashboard/lavel">Lavel</Link>
+              <Link href="/dashboard/level">Lavel</Link>
             </Menu.Item>
             <Menu.Item key="7" icon={<AiOutlineIdcard />}>
               <Link href="/dashboard/blog">Blog</Link>
             </Menu.Item>
             <Menu.Item key="8" icon={<FaPowerOff />}>
-              <button 
-              onClick={()=>handleLogout()}
+              <button
+                onClick={() => handleLogout()}
               >Logout</button>
             </Menu.Item>
           </Menu>
@@ -111,7 +114,7 @@ const DashboardLayout = ({children}) => {
             padding: 0,
             position: "sticky",
             top: 0,
-            zIndex:999
+            zIndex: 999
           }}
         >
           <Button
