@@ -18,7 +18,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966681/BookShop/book%20images/igp0q5tyxx8rdeu7ebxt.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966681/BookShop/book%20images/smustmzqi29jdsrfpf03.jpg"]
     },
     {
         "category": "Play Way Writing",
@@ -38,7 +38,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966681/BookShop/book%20images/tgxmewvgoz74dhbkkooc.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966682/BookShop/book%20images/ip68m6eiera214ewj8ke.jpg"]
     },
     {
         "category": "Play Way Writing",
@@ -58,7 +58,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966712/BookShop/book%20images/g2ci9l4tbl5uxjc1qhum.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966681/BookShop/book%20images/zliteegdfkqtklwhyqf1.jpg"]
     },
     {
         "category": "Play Way Writing",
@@ -78,7 +78,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966712/BookShop/book%20images/fupyaa4rbdhobtwtnfwl.jpg"]
     },
     {
         "category": "Play Way Writing",
@@ -98,7 +98,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966712/BookShop/book%20images/c5ymsjigjd62hurxfpqs.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966681/BookShop/book%20images/zwgrtt7wb7aavlytcepf.jpg"]
     },
     {
         "category": "ALL in One",
@@ -119,7 +119,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966678/BookShop/book%20images/sioujzydbwchqn0kjpgr.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/yjjhxlbnl6ir3irlrh5x.jpg"]
     },
     {
         "category": "ALL in One",
@@ -140,7 +140,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967337/BookShop/book%20images/xbxkxrfunbgeh3yaqfoa.jpg"]
     },
     {
         "category": "ALL in One",
@@ -161,7 +161,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966678/BookShop/book%20images/g2czwm489yun16woqp8m.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/pbteckpxx3lpfgtit4ey.jpg"]
     },
     {
         "category": "ALL in One",
@@ -182,80 +182,10 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967340/BookShop/book%20images/rwbplihjyv6etyr47fwk.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695967343/BookShop/book%20images/m9yg86v09nkb8kjqexpp.jpg"]
     },
     {
-        "category": "ALL in One",
-        "name": "ALL in One Urdu Writing",
-        "price": "100.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
-    },
-    {
-        "category": "ALL in One",
-        "name": "ALL in One Urdu Reading",
-        "price": "160.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
-    },
-    {
-        "category": "Chaman Urdu Khushkhati ",
-        "name": "Chaman Urdu Khushkhati writing-A",
-        "price": "100.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
-    },
-    {
-        "category": "Chaman Urdu Khushkhati ",
-        "name": "Chaman Urdu Khushkhati writing-B",
-        "price": "100.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
-    },
-    {
-        "category": "Chaman Urdu Khushkhati ",
-        "name": "Chaman Urdu Khushkhati writing-C",
-        "price": "100.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
-    },
-    {
-        "category": "Chaman Urdu Khushkhati ",
+        "category": "Chaman Urdu Khushkhati",
         "name": "Chaman Urdu Khushkhati 1",
         "price": "90.0",
         "quantity": "1000",
@@ -273,10 +203,10 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967338/BookShop/book%20images/e3plx3ecocwuc8flzasc.jpg"]
     },
     {
-        "category": "Chaman Urdu Khushkhati ",
+        "category": "Chaman Urdu Khushkhati",
         "name": "Chaman Urdu Khushkhati 2",
         "price": "90.0",
         "quantity": "1000",
@@ -294,10 +224,10 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695973579/BookShop/book%20images/pb8mgvqlxpci9ud9uvwq.png"]
     },
     {
-        "category": "Chaman Urdu Khushkhati ",
+        "category": "Chaman Urdu Khushkhati",
         "name": "Chaman Urdu Khushkhati 3",
         "price": "90.0",
         "quantity": "1000",
@@ -315,10 +245,10 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967345/BookShop/book%20images/wtx2op8yjlla0ec3apui.jpg"]
     },
     {
-        "category": "Chaman Urdu Khushkhati ",
+        "category": "Chaman Urdu Khushkhati",
         "name": "Chaman Urdu Khushkhati 4",
         "price": "90.0",
         "quantity": "1000",
@@ -336,10 +266,10 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967349/BookShop/book%20images/me89ngf72i1pudrtvjhw.jpg"]
     },
     {
-        "category": "Chaman Urdu Khushkhati ",
+        "category": "Chaman Urdu Khushkhati",
         "name": "Chaman Urdu Khushkhati 5",
         "price": "90.0",
         "quantity": "1000",
@@ -357,7 +287,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967336/BookShop/book%20images/ut5tlydaq7iicp8ozn0y.jpg"]
     },
     {
         "category": "Translation",
@@ -409,7 +339,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966680/BookShop/book%20images/vn01hgg0vtavrsaw8vmi.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -436,7 +366,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966680/BookShop/book%20images/ounmnrunkm0eo7gvma53.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -463,7 +393,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/uxfho9zqkduhc6emqtpv.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -490,7 +420,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966678/BookShop/book%20images/l3hfvie4tlwslugg5nkn.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966680/BookShop/book%20images/a3mt4liz0z8wjfzkms2i.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -517,21 +447,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
-    },
-    {
-        "category": "Khel Khel Me Likhna Sikhe",
-        "name": "Khel Khel Me Likhna Sikhe Part-1",
-        "price": "200.0",
-        "quantity": null,
-        "discountPercentage": null,
-        "description": null,
-        "language": null,
-        "level": null,
-        "cover": null,
-        "author": null,
-        "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/gtgjywg5jslx0ixixbuz.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -554,7 +470,7 @@
         ],
         "author": "Dr. Yaswant Bist",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966680/BookShop/book%20images/nxyi4hobhqsxvdep6hnm.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -581,7 +497,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966678/BookShop/book%20images/ghz0ag4pecv0uh1cwtva.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -605,7 +521,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/gtgjywg5jslx0ixixbuz.jpg"]
     },
     {
         "category": "Khel Khel Me Likhna Sikhe",
@@ -632,7 +548,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695967341/BookShop/book%20images/vjjmzzrqsba9fpgi1cyc.jpg"]
     },
     {
         "category": "English Grammar",
@@ -658,7 +574,7 @@
         ],
         "author": "P S Gupta",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966679/BookShop/book%20images/npdnjnvzyp2pwzdne2i4.jpg","https://res.cloudinary.com/elpixala/image/upload/v1695966678/BookShop/book%20images/rswgo5qjvwycvphzvged.jpg"]
     },
     {
         "category": "Essay letters and stories",
@@ -684,7 +600,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695972255/BookShop/book%20images/ijkcwirad5oyqobdwddg.png"]
     },
     {
         "category": "Translation",
@@ -711,7 +627,7 @@
         ],
         "author": "Gupta & Gill",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695972256/BookShop/book%20images/pt0alqkxtskb3btlqzra.png","https://res.cloudinary.com/elpixala/image/upload/v1695972258/BookShop/book%20images/wtjoov5sjzohtfrvlzxz.png"]
     },
     {
         "category": "Translation",
@@ -738,7 +654,7 @@
         ],
         "author": "P S Gupta",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695966677/BookShop/book%20images/aohwgggkb8hlee8valc3.jpg"]
     },
     {
         "category": "Essay and letters",
@@ -762,7 +678,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695972253/BookShop/book%20images/deqclwmotcr09zo5qxxa.png"]
     },
     {
         "category": "Speaking course",
@@ -789,7 +705,7 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695972258/BookShop/book%20images/gv4folu8we7efgifdzgu.png"]
     },
     {
         "category": "Dictionary",
@@ -816,6 +732,6 @@
         ],
         "author": "Nand Lal Daya Ram",
         "coupon": [],
-        "image": []
+        "image": ["https://res.cloudinary.com/elpixala/image/upload/v1695972252/BookShop/book%20images/zh042bprvvk2fppyjpsm.png","https://res.cloudinary.com/elpixala/image/upload/v1695972253/BookShop/book%20images/ct9i22uw2c9bz0zqn4tk.png"]
     }
 ]

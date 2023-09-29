@@ -98,7 +98,6 @@ const ManageCoupon = () => {
                                             })}
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>

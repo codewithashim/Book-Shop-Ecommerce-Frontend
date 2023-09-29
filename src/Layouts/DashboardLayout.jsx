@@ -90,16 +90,19 @@ const DashboardLayout = ({ children }) => {
             <Menu.Item key="4" icon={<MdLocalOffer />}>
               <Link href="/dashboard/category">Category</Link>
             </Menu.Item>
-            <Menu.Item key="5" icon={<FaDiceD6 />}>
+            <Menu.Item key="5" icon={<MdLocalOffer />}>
+              <Link href="/dashboard/popular-category/add-popular-category">Popular Category</Link>
+            </Menu.Item>
+            <Menu.Item key="6" icon={<FaDiceD6 />}>
               <Link href="/dashboard/copuon">Coupon</Link>
             </Menu.Item>
-            <Menu.Item key="6" icon={<FaRegClock />}>
+            <Menu.Item key="7" icon={<FaRegClock />}>
               <Link href="/dashboard/level">Lavel</Link>
             </Menu.Item>
-            <Menu.Item key="7" icon={<AiOutlineIdcard />}>
+            <Menu.Item key="8" icon={<AiOutlineIdcard />}>
               <Link href="/dashboard/blog">Blog</Link>
             </Menu.Item>
-            <Menu.Item key="8" icon={<FaPowerOff />}>
+            <Menu.Item key="9" icon={<FaPowerOff />}>
               <button
                 onClick={() => handleLogout()}
               >Logout</button>

@@ -1,28 +1,53 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper";
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper';
 import Image from 'next/image';
-import { BannerFiveImage, BannerFourImage, BannerThreeImage } from '@/src/Assets';
-
+import {
+  BannerFiveImage,
+  BannerThreeImage,
+  BannerFourImage,
+  MobileBannerFiveImage,
+  MobileBannerThreeImage,
+  MobileBannerFourImage,
+} from '@/src/Assets';
 
 const ProductSlider = () => {
-  const HomeSliderData = [
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Define your mobile breakpoint
+    };
+
+    handleResize(); // Check the initial screen width
+    window.addEventListener('resize', handleResize); // Listen for window resize events
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Remove the event listener when the component unmounts
+    };
+  }, []);
+
+  const slidesData = [
     {
       id: 1,
-      image: BannerFiveImage,
+      desktopImage: BannerFiveImage,
+      mobileImage: MobileBannerFiveImage, // Add mobile image for slide 1
     },
     {
       id: 2,
-      image: BannerThreeImage,
+      desktopImage: BannerThreeImage,
+      mobileImage: MobileBannerThreeImage, // Add mobile image for slide 2
     },
     {
       id: 3,
-      image: BannerFourImage,
-    }
+      desktopImage: BannerFourImage,
+      mobileImage: MobileBannerFourImage, // Add mobile image for slide 3
+    },
   ];
+
   return (
     <div>
       <Swiper
@@ -34,17 +59,21 @@ const ProductSlider = () => {
         }}
         loop={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="product-swiper">
-        {HomeSliderData &&
-          HomeSliderData.map((slide) => {
+        className="product-swiper"
+      >
+        {slidesData &&
+          slidesData.map((slide) => {
             return (
               <SwiperSlide key={slide.id}>
-                <Image
-                  src={slide.image}
-                  alt="slider image"
-                  layout="responsive"
-                
-                />
+                <div className="slider-images">
+                  <Image
+                    src={isMobile ? slide.mobileImage : slide.desktopImage}
+                    alt="Banner Image"
+                    className="w-full h-auto"
+                    width={isMobile ? 768 : 1920}
+                    height={isMobile ? 768 : 500}
+                  />
+                </div>
               </SwiperSlide>
             );
           })}

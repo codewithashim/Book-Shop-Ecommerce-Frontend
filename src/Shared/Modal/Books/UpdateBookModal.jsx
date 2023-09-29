@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from 'antd';
 import { Select } from 'antd';
@@ -18,18 +18,28 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
         setIsUpdateBookModalOpen(false);
     };
     const { categoryData, levelData, couponData } = useBook()
-    const [coupon, setCoupon] = useState("");
     const [features, setFeatures] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    const [selectedCoupons, setSelectedCoupons] = useState([]);
+
     // === coupon ===
+    useEffect(() => {
+        if (isUpdateBookModalOpen) {
+            setSelectedCoupons(bookData?.coupon || []);
+        }
+    }, [isUpdateBookModalOpen, bookData]);
+
+    const handleCouponChange = (value) => {
+        setSelectedCoupons(value);
+    };
+
     const couponOptions = couponData?.map((coupon) => ({
-        value: coupon._id,
+        value: coupon.coupon,
         label: coupon.coupon,
     }));
-    const handleCouponChange = (value) => {
-        setCoupon(value);
-    };
+
+
 
     // ==== Cloudinary ==== 
     const upload_preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
@@ -80,21 +90,27 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
             }
             setUploadedImageUrls(uploadedUrls);
             const featuresArray = typeof features === 'string' ? features.split(',') : [];
+
             const bookUpdateData = {
                 category: valueData.category,
-                name: valueData.bookName,
+                name: valueData.name,
                 price: valueData.price,
                 quantity: valueData.quantity,
                 discountPercentage: valueData.discountPercentage,
                 description: valueData.description,
                 language: valueData.language,
-                level: valueData.level,
+                level: valueData.levelOption,
                 cover: valueData.cover,
-                features: featuresArray,
+                features: features,
                 author: valueData.author,
-                coupon: coupon,
+                coupon: selectedCoupons,
                 image: uploadedUrls,
             }
+
+            console.log(valueData, "+++++++++ valueData");
+
+
+            console.log(bookUpdateData, "+++++++++ bookUpdateData");
 
             const res = await fetch(updateBooksUrl(bookData?._id), {
                 method: 'patch',
@@ -103,8 +119,10 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                 },
                 body: JSON.stringify(bookUpdateData),
             });
-            const dataRes = await res.json();
-            if (!dataRes) {
+            // const dataRes = await res.json();
+            // console.log(dataRes);
+            console.log(res);
+            if (!res) {
                 Swal.fire({
                     position: "center",
                     timerProgressBar: true,
@@ -139,6 +157,8 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                     timer: 3500,
                 });
                 setLoading(false);
+                setIsUpdateBookModalOpen(false);
+
             }
         } catch (error) {
             console.error('Error uploading images to Cloudinary:', error);
@@ -147,10 +167,13 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
         }
     };
 
-
-
     return (
-        <Modal title="Update Book" open={isUpdateBookModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}
+        <Modal
+            open={isUpdateBookModalOpen}
+            okButtonProps={{ style: { display: 'none' } }}
+            onCancel={handleCancel}
+            title="Update Book"
+            visible={isUpdateBookModalOpen}
             footer={null}
             width={800}
             style={{
@@ -158,7 +181,6 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                 borderRadius: '10px',
                 overflow: 'hidden',
                 boxShadow: '0 0 10px 0 #000',
-                
             }}
         >
             <section className="my-4">
@@ -175,19 +197,19 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                             defaultValue={bookData?.name}
                             {...register("name")}
                         />
-                        <select name="category" id="category"
+                        <select
+                            {...register("category")}
                             className='border-2 border-gray-300 rounded-md p-2'
                             defaultValue={bookData?.category}
-                            {...register("category")}
                         >
-                            <option value="category">Category</option>
-                            <hr />
-
-                            {categoryData?.map((category) => () => {
+                            <option value="">Select Category</option>
+                            {categoryData && categoryData.map((categoryResponse) => {
+                                const { _id, category } = categoryResponse;
                                 return (
-                                    <option value={category.category}
+                                    <option value={category}
                                         className='border-2 border-gray-300 rounded-md p-4 my-2'
-                                    >{category.category}</option>
+                                        key={_id}
+                                    >{category}</option>
                                 )
                             })}
                         </select>
@@ -225,32 +247,34 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                             {...register("cover")}
                         />
 
-                        <select name="level" id="level"
+                        <select
+                            {...register("levelOption")}
                             className='border-2 border-gray-300 rounded-md p-2'
                             defaultValue={bookData?.level}
-                            {...register("level")}
                         >
-                            <option value="level">Level</option>
-                            <hr />
-
-                            {levelData?.map((level) => () => {
+                            <option value="">Select Level</option>
+                            {levelData && levelData?.map((levelResponse) => {
+                                const { _id, level } = levelResponse;
                                 return (
-                                    <option value={level.level}
+                                    <option value={level}
                                         className='border-2 border-gray-300 rounded-md p-4 my-2'
-                                    >{level.level}</option>
+                                        key={_id}
+                                    >{level}</option>
                                 )
                             })}
                         </select>
+
                         <Select
                             mode="tags"
                             style={{
                                 width: '100%',
                             }}
                             placeholder="Coupon"
-                            defaultValue={bookData?.coupon}
+                            value={selectedCoupons} // Use selectedCoupons as the value
                             onChange={handleCouponChange}
                             options={couponOptions}
                         />
+
 
                         <input
                             placeholder="Quantity"
@@ -316,6 +340,7 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                                             className="px-4 pb-4"
                                             name="images"
                                             accept="image/*"
+                                            defaultValue={bookData?.image}
                                             multiple
                                             onChange={handleFileChange}
                                         />

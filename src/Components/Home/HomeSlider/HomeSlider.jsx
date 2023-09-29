@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,41 +12,69 @@ import {
   BannerFourImage,
   BannerFiveImage,
   BannerSixImage,
-  BannerSevenImage
+  BannerSevenImage,
+  MobileBannerOneImage,
+  MobileBannerTowImage,
+  MobileBannerThreeImage,
+  MobileBannerFourImage,
+  MobileBannerFiveImage,
+  MobileBannerSixImage,
+  MobileBannerSevenImage,
 } from "@/src/Assets";
 
 const HomeSliderData = [
   {
     id: 1,
-    image: BannerOneImage,
+    desktopImage: BannerOneImage,
+    mobileImage: MobileBannerOneImage, // Add mobile image for slide 1
   },
   {
     id: 2,
-    image: BannerTowImage,
+    desktopImage: BannerTowImage,
+    mobileImage: MobileBannerTowImage, // Add mobile image for slide 2
   },
   {
     id: 3,
-    image: BannerThreeImage,
+    desktopImage: BannerThreeImage,
+    mobileImage: MobileBannerThreeImage, // Add mobile image for slide 3
   },
   {
     id: 4,
-    image: BannerFourImage,
+    desktopImage: BannerFourImage,
+    mobileImage: MobileBannerFourImage, // Add mobile image for slide 4
   },
   {
     id: 5,
-    image: BannerFiveImage,
+    desktopImage: BannerFiveImage,
+    mobileImage: MobileBannerFiveImage, // Add mobile image for slide 5
   },
   {
     id: 6,
-    image: BannerSixImage,
+    desktopImage: BannerSixImage,
+    mobileImage: MobileBannerSixImage, // Add mobile image for slide 6
   },
   {
     id: 7,
-    image: BannerSevenImage,
+    desktopImage: BannerSevenImage,
+    mobileImage: MobileBannerSevenImage, // Add mobile image for slide 7
   },
 ];
 
 const HeroSlider = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Define your mobile breakpoint
+    };
+
+    handleResize(); // Check the initial screen width
+    window.addEventListener("resize", handleResize); // Listen for window resize events
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Remove the event listener when the component unmounts
+    };
+  }, []);
 
   return (
     <>
@@ -64,15 +92,18 @@ const HeroSlider = () => {
         {HomeSliderData &&
           HomeSliderData?.map((slide) => {
             return (
-              <SwiperSlide key={slide.id}>
-                <Image
-                  src={slide.image}
-                  alt="slider image"
-                  layout="responsive"
-                  width={750}
-                  height={500}
-                  className="w-[100%] h-[100%]"
-                />
+              <SwiperSlide key={slide?.id}>
+                <div className="slider-images">
+                  <Image
+                    src={isMobile ? slide?.mobileImage : slide?.desktopImage}
+                    alt="Banner Image"
+                    className="w-full h-full"
+                    width={isMobile ? 768 : 1920}
+                    height={isMobile ? 768 : 500}
+                  />
+
+
+                </div>
               </SwiperSlide>
             );
           })}

@@ -15,14 +15,14 @@ const Home = () => {
     <section className="container">
       <HomeSlider />
       {/* ====== Home Slider ======= */}
-      <h1 className="text-2xl text-center mt-8 font-semibold">Popular Category</h1><br />
+      <h1 className="text-2xl text-center mt-8 font-semibold">Popular Categorys</h1><br />
       <Category />
 
       <div className="mt-8 grid md:grid-cols-4 grid-cols-1">
         <div className="col-span-3">
           <HomeBestSealSlider />
         </div>
-        <div className="">
+        <div className="hidden md:block">
           <Image src={BookStoreBannerOne} className="md:w-full w-full md:h-full h-full" width={400} height={500} />
         </div>
       </div>

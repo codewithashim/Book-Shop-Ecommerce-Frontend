@@ -15,12 +15,22 @@ import BookFareBannerTwo from "./BooksOffer/bookfare-banner-02.png"
 
 import MainLogo from "./Logo/Nd_logo_main.png"
 
-import BookCategoryOne from "./Books/Book-01.jpg"
-import BookCategoryTwo from "./Books/Book-02.jpg"
-import BookCategoryThree from "./Books/Book-03.jpg"
-import BookCategoryFour from "./Books/Book-04.jpg"
-import BookCategoryFive from "./Books/Book-05.jpg"
-import BookCategorySix from "./Books/Book-06.jpg"
+// == mobile banner
+import MobileBannerOneImage from "./MobileBanner/MobileBanner-(1).png"
+import MobileBannerTowImage from "./MobileBanner/MobileBanner-(2).png"
+import MobileBannerThreeImage from "./MobileBanner/MobileBanner-(3).png"
+import MobileBannerFourImage from "./MobileBanner/MobileBanner-(4).png"
+import MobileBannerFiveImage from "./MobileBanner/MobileBanner-(5).png"
+import MobileBannerSixImage from "./MobileBanner/MobileBanner-(6).png"
+import MobileBannerSevenImage from "./MobileBanner/MobileBanner-(7).png"
+import MobileBannerEightImage from "./MobileBanner/MobileBanner-(8).png"
+import MobileBannerNineImage from "./MobileBanner/MobileBanner-(9).png"
+import MobileBannerTenImage from "./MobileBanner/MobileBanner-(10).png"
+import MobileBannerElevenImage from "./MobileBanner/MobileBanner-(11).png"
+import MobileBannerTwelveImage from "./MobileBanner/MobileBanner-(12).png"
+import MobileBannerThirteenImage from "./MobileBanner/MobileBanner-(13).png"
+import MobileBannerFourteenImage from "./MobileBanner/MobileBanner-(14).png"
+
 
 
 
@@ -43,12 +53,22 @@ export {
     BookFareBannerTwo,
     MainLogo,
 
-    BookCategoryOne,
-    BookCategoryTwo,
-    BookCategoryThree,
-    BookCategoryFour,
-    BookCategoryFive,
-    BookCategorySix,
+    // == mobile banner
+    MobileBannerOneImage,
+    MobileBannerTowImage,
+    MobileBannerThreeImage,
+    MobileBannerFourImage,
+    MobileBannerFiveImage,
+    MobileBannerSixImage,
+    MobileBannerSevenImage,
+    MobileBannerEightImage,
+    MobileBannerNineImage,
+    MobileBannerTenImage,
+    MobileBannerElevenImage,
+    MobileBannerTwelveImage,
+    MobileBannerThirteenImage,
+    MobileBannerFourteenImage,
     
+
 }
 

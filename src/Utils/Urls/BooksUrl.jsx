@@ -4,7 +4,7 @@ export const createBookUrl = basedUrl + 'books/create-book'
 
 export const getBooksUrl = basedUrl + 'books/get-all-book'
 
-export const getSingelUrl = (id) => basedUrl + `books/get-singel-book/${id}`
+export const getSingelBookUrl = (id) => basedUrl + `books/get-singel-book/${id}`
 
 export const updateBooksUrl = (id) => basedUrl + `books/update-book/${id}`
 

@@ -319,6 +319,26 @@ const AddBook = () => {
                 </label>
               </div>
             </div>
+
+            {/* preview the selected images here  */}
+
+            <div className="flex flex-wrap gap-4 mt-4">
+              {imageFiles.map((file) => (
+                <div
+                  key={file.name}
+                  className="relative w-32 h-32 overflow-hidden rounded-md"
+                >
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    className="absolute inset-0 object-cover w-full h-full"
+                  />
+                </div>
+              ))}
+            </div>
+
+
+
           </div>
 
           <Button type="default" htmlType="submit" style={{

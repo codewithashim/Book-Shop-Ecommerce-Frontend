@@ -1,16 +1,10 @@
 import useBook from "@/src/Hooks/useBook";
-import UpdateBookModal from '@/src/Shared/Modal/Books/UpdateBookModal';
+import Link from "next/link";
 import React, { useState } from 'react';
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 
 const ManageBook = () => {
-    const { handelBookDelete, bookData, } = useBook();
-    const [isUpdateBookModalOpen, setIsUpdateBookModalOpen] = useState(false);
-    const [selectedBook, setSelectedBook] = useState(null);
-    const showBookModal = (book) => {
-        setSelectedBook(book);
-        setIsUpdateBookModalOpen(true);
-    }
+    const { handelBookDelete, bookData } = useBook();
 
 
     return (
@@ -21,7 +15,9 @@ const ManageBook = () => {
                     bookData.map((bookData) => {
                         const { _id, name, price, image, discountPercentage } = bookData;
                         return (
-                            <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                            <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
+                                key={_id}
+                            >
                                 <a
                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
                                     href="#"
@@ -56,23 +52,17 @@ const ManageBook = () => {
                                         >
                                             <FaRegTrashAlt />
                                         </button>
-                                        <button className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                                            onClick={() => showBookModal(bookData)}
+                                        <Link className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                                            href={`/dashboard/update-book/${_id}`}
                                         >
                                             <FaRegEdit /> Update
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         )
                     })}
             </div>
-
-            <UpdateBookModal
-                setIsUpdateBookModalOpen={setIsUpdateBookModalOpen}
-                isUpdateBookModalOpen={isUpdateBookModalOpen}
-                bookData={selectedBook}
-            />
         </section>
     );
 };
