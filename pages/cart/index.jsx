@@ -121,7 +121,7 @@ const CartPage = () => {
                                                                     <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
                                                                         <span className="text-xs font-normal text-gray-400">₹</span>{" "} {book?.price}
                                                                     </p>
-                                                                    <div className="sm:order-1">
+                                                                    {/* <div className="sm:order-1">
                                                                         <div className="mx-auto flex h-8 items-stretch text-gray-600">
                                                                             <button className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
                                                                                 onClick={() => decreaseQuantity(_id)}
@@ -137,7 +137,7 @@ const CartPage = () => {
                                                                                 +
                                                                             </button>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> */}
                                                                 </div>
                                                             </div>
                                                             <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">

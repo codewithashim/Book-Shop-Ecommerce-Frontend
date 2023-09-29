@@ -8,12 +8,12 @@ const HomeBestSeal = () => {
     const { bookData } = useBook();
 
     return (
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             {
-                bookData?.slice(0, 8).map(book => (
-                    <Link href={`/product/${book?.id}`}>
-                        <div className="card bg-white px-3 pt-2 pb-[30px]  shadow-lg hover rounded md:h-[520px]">
-                            <div className="bg-[#e1e6e9]  ">
+                bookData && bookData?.slice(0, 8).map(book => (
+                    <Link key={book?.id} href={`/product/${book?.id}`}>
+                        <div className="card bg-white px-3 pt-2 pb-[30px] shadow-lg hover rounded">
+                            <div className="bg-[#e1e6e9]">
                                 <Image
                                     src={book?.image[0] || bookImg}
                                     width={400}
@@ -24,9 +24,9 @@ const HomeBestSeal = () => {
                             </div>
 
                             <div className="p-4">
-                                <h4 className="text-[1rem] font-regular mt-3">{book?.name}</h4>
+                                <small className="text-[0.8rem] font-regular mt-3">{book?.name.slice(0, 30) + "..."}</small>
                                 <div>
-                                    <span className="text-3xl font-bold text-slate-900">₹ {book?.price}</span>
+                                    <span className="text-2xl font-bold text-slate-900">₹ {book?.price}</span>
                                     <span className="text-[1rem] text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
                                 </div>
                             </div>

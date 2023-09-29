@@ -34,7 +34,7 @@ const AllInOneCategory = () => {
                     All In One (KINDERGARTEN)
                 </h2>
 
-                <div className="flex  items-center gap-10 top-0">
+                <div className="flex  items-center gap-8 top-0">
                     <button
                         className="prev-arrow cursor-pointer bg-[#ED1C24] p-3 rounded-full"
                         onClick={handlePrev}

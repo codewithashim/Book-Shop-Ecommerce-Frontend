@@ -16,7 +16,7 @@ const BottomNav = () => {
                             <BsFillGridFill />
                         </button>
                         <li className='text-sm flex items-center gap-2 dropdown relative'>
-                            <h1 className='flex justify-center gap-4 items-center font-bold text-[1.2rem]'>  <BsFillGridFill /> ALL CATEGORY <FaAngleDown /></h1>
+                            <h1 className='flex justify-center gap-4 items-center font-bold text-[1.2rem]'>  <BsFillGridFill className='hidden md:block' /> ALL CATEGORY <FaAngleDown /></h1>
 
                             <div className="dropdown-menu hidden bg-[white] p-3 text-black absolute w-[300px] top-[20px] md:left-0 left-[-30px] shadow-lg rounded-sm duration-200 shadow-[#00000042] z-100">
                                 <ul>

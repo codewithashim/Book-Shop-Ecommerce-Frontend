@@ -4,20 +4,27 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import banner2 from '@/public/lgBanner2.jpg';
-import banner3 from '@/public/lgBanner3.jpg';
 import Image from 'next/image';
+import { BannerSevenImage, BannerFiveImage, BannerThreeImage, BannerOneImage, } from '@/src/Assets';
 
 
 const HomeBestSealSlider = () => {
   const HomeSliderData = [
     {
       id: 1,
-      image: banner3,
+      image: BannerSevenImage,
     },
     {
       id: 2,
-      image: banner2,
+      image: BannerFiveImage,
+    },
+    {
+      id: 3,
+      image: BannerThreeImage,
+    },
+    {
+      id: 4,
+      image: BannerOneImage,
     },
   ];
   return (
