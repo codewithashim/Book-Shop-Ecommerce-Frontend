@@ -24,7 +24,7 @@ const ProductSlider = () => {
     }
   ];
   return (
-    <div className='container'>
+    <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

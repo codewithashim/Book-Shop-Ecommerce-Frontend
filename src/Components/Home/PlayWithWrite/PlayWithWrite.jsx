@@ -90,7 +90,7 @@ const PlayWithWrite = () => {
                                 return (
                                     <SwiperSlide className="cursor-grab" key={book.id}>
                                         <Link href={`/product/${book?.id}`}>
-                                            <div className="card bg-white pt-2 px-2 pb-6 my-4 mx-2 shadow-lg hover rounded">
+                                            <div className="card bg-white pt-2 px-2 pb-6 my-4 mx-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
                                                 <div className="bg-[#e1e6e9]  ">
                                                     <Image
                                                         src={book?.image[0] || bookImg}

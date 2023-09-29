@@ -45,7 +45,7 @@ const ProductPage = () => {
                             isCloups && <div className="flex flex-col gap-2">
                                 {categoryData && categoryData?.map((categoryresult) => (
                                     <div
-                                        className="flex items-center space-x-2 mt-3"
+                                        className="flex items-center space-x-2 mt-3 cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
                                         key={categoryresult?._id}
                                     >
                                         <input
@@ -116,16 +116,17 @@ const ProductPage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
-                        {currentBooks && currentBooks.map((book) => (
-                            <Link key={book?.id} href={`/product/${book?.id}`}>
-                                <div className="card bg-white px-3 pt-2 shadow-lg hover rounded">
+                        {currentBooks && currentBooks.map((book) => {
+                            return(
+                                <Link key={book?.id} href={`/product/${book?.id}`}>
+                                <div className="card bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
                                     <div className="bg-[#ebeef0]">
                                         <Image
-                                            src={book?.img}
+                                            src={book?.image[0]}
                                             width={400}
                                             height={600}
                                             alt={book?.name}
-                                            className="h-[290px] rounded"
+                                            className=" rounded"
                                         />
                                     </div>
 
@@ -142,7 +143,8 @@ const ProductPage = () => {
                                     </div>
                                 </div>
                             </Link>
-                        ))}
+                            )
+                        })}
                     </div>
 
                     {/* Responsive Pagination */}

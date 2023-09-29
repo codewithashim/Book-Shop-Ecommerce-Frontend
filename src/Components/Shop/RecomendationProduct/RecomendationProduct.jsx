@@ -86,7 +86,7 @@ const RecomendationProduct = () => {
                                 return (
                                     <SwiperSlide className="cursor-grab" key={book._id}>
                                         <Link href={`/product/${book?._id}`}>
-                                            <div className="card bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded h-[430px]">
+                                            <div className="card bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100">
                                                 <div className="bg-[#e1e6e9]  ">
                                                     <Image
                                                         src={book?.image[0] || NotFoundImage}

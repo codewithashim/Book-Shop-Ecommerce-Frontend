@@ -1,4 +1,3 @@
-import bookImg from '@/public/banner 07.png';
 import banner from '@/public/lgbanner2.jpg';
 import { NotFoundImage } from '@/src/Assets';
 import useBook from '@/src/Hooks/useBook';
@@ -17,15 +16,15 @@ const category_product = () => {
 
     return (
         <RootLayout>
-            <div className="container">
+            <div className="md:container">
                 <Image src={banner} width={900} height={1000} className='w-full md:h-[500px] object-cover' />
                 <br />
                 <h3 className='font-semibold md:text-3xl text-lg'>Category {categoryName}</h3>
-                <div className="grid md:grid-cols-4 grid-cols-2 gap-4 mt-4">
+                <div className="grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 mt-4">
                     {
                         filterBookData?.map(book => (
                             <Link href={`/product/${book?._id}`}>
-                                <div className="card bg-white px-3 h-[520px] pt-2 pb-[20px]  shadow-lg rounded hover">
+                                <div className="card bg-white px-3 pt-2  md:h-[500px] h-[330px] pb-[20px]  shadow-lg rounded hover">
                                     <div className="bg-[#e1e6e9]">
                                         <Image
                                             src={book?.image[0] || NotFoundImage}
@@ -36,11 +35,11 @@ const category_product = () => {
                                         />
                                     </div>
 
-                                    <div className="p-4">
-                                        <h4 className="text-[1rem] font-regular mt-3">{book?.name}</h4>
-                                        <div>
-                                            <span className="text-3xl font-bold text-slate-900">₹ {book?.price}</span>
-                                            <span className="text-[1rem] text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
+                                    <div className="md:p-4">
+                                        <h4 className="md:text-[1rem] text-sm font-regular mt-3">{book?.name?.slice(0, 56)} {book?.name?.length}</h4>
+                                        <div className='flex items-center gap-2 mt-3'>
+                                            <span className="md:text-3xl text-md font-bold text-slate-900">₹ {book?.price}</span>
+                                            <span className="md:text-[1rem] text-sm text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -49,11 +48,11 @@ const category_product = () => {
                     }
                 </div>
                 <h3 className='font-semibold md:text-3xl text-lg mt-12'>Most Seal</h3>
-                <div className="grid md:grid-cols-4 grid-cols-2 gap-4 mt-8">
+                <div className="grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 mt-8">
                     {
                         bookData && bookData?.slice(0, 12)?.map(book => (
-                            <Link href={`/product/${book?._id}`}>
-                                <div className="card bg-white px-3 h-[500px] pt-2 pb-[20px]  shadow-lg rounded hover">
+                                <Link href={`/product/${book?._id}`}>
+                                <div className="card bg-white px-3 pt-2 pb-[20px] md:h-[500px] h-[330px] shadow-lg rounded hover">
                                     <div className="bg-[#e1e6e9]">
                                         <Image
                                             src={book?.image[0] || NotFoundImage}
@@ -64,11 +63,11 @@ const category_product = () => {
                                         />
                                     </div>
 
-                                    <div className="p-4">
-                                        <h4 className="text-lg font-regular mt-3">{book?.name}</h4>
-                                        <div>
-                                            <span className="text-3xl font-bold text-slate-900">₹ {book?.price}</span>
-                                            <span className="text-[1rem] text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
+                                    <div className="md:p-4">
+                                        <h4 className="md:text-[1rem] text-sm font-regular mt-3">{book?.name?.slice(0, 90)}</h4>
+                                        <div className='flex items-center gap-2 mt-3'>
+                                            <span className="md:text-3xl text-md font-bold text-slate-900">₹ {book?.price}</span>
+                                            <span className="md:text-[1rem] text-sm text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
                                         </div>
                                     </div>
                                 </div>

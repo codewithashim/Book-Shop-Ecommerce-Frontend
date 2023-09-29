@@ -10,7 +10,7 @@ import AllInOneCategory from "../AllInOne/AllInOneCategory";
 import { BookStoreBannerOne } from "@/src/Assets";
 
 const Home = () => {
-  
+
   return (
     <section className="container">
       <HomeSlider />

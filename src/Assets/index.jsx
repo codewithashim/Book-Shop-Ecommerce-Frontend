@@ -13,7 +13,7 @@ import BookStoreBannerTwo from "./BooksOffer/book-store-02.png"
 import BookFareBannerOne from "./BooksOffer/bookfare-banner-01.png"
 import BookFareBannerTwo from "./BooksOffer/bookfare-banner-02.png"
 
-import MainLogo from "./Logo/NDLogo.png"
+import MainLogo from "./Logo/Nd_logo_main.png"
 
 import BookCategoryOne from "./Books/Book-01.jpg"
 import BookCategoryTwo from "./Books/Book-02.jpg"

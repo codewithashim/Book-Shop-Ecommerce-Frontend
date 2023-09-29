@@ -19,7 +19,7 @@ const ManageBook = () => {
                 {bookData &&
                     bookData.length &&
                     bookData.map((bookData) => {
-                        const { _id, name, price, image } = bookData;
+                        const { _id, name, price, image, discountPercentage } = bookData;
                         return (
                             <div className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
                                 <a
@@ -27,12 +27,12 @@ const ManageBook = () => {
                                     href="#"
                                 >
                                     <img
-                                        className="object-cover"
+                                        className=""
                                         src={image[0] || "https://images.unsplash.com/photo-1622835047087-4b3b0f5b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9va3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"}
                                         alt="product image"
                                     />
                                     <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-                                        39% OFF
+                                        {discountPercentage}%
                                     </span>
                                 </a>
                                 <div className="mt-4 px-5 pb-5">
@@ -44,7 +44,9 @@ const ManageBook = () => {
                                     <div className="mt-2 mb-5 flex items-center justify-between">
                                         <p>
                                             <span className="text-3xl font-bold text-slate-900">{price}</span>
-                                            <span className="text-sm text-slate-900 line-through">$699</span>
+                                            <span className="text-sm text-slate-900 line-through">
+                                                {price + (price * discountPercentage) / 100}
+                                            </span>
                                         </p>
                                     </div>
 

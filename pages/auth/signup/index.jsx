@@ -38,31 +38,14 @@ const Index = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
+  const handleGoogleSingnIn = () => {
     signInWithGoogle()
-      .then(async (userCredential) => {
-        // Successfully signed in with Google
-        const user = userCredential.user;
-
-        // Extract user data from the Google sign-in response
-        const userData = {
-          name: user.displayName,
-          email: user.email,
-          phone: user.phoneNumber || "",
-          role: 'user', // You can set the user's role here
-        };
-
-        // Save user data to the database
-        await saveUserDataToDatabase(userData);
-
-        // Redirect to the home page
+      .then(() => {
         router.push("/");
-
-        // Show a success toast notification
         Swal.fire({
           position: "top-end",
           timerProgressBar: true,
-          title: "Successfully Logged In!",
+          title: "Successfully Login!",
           iconColor: "#ED1C24",
           toast: true,
           icon: "success",
@@ -79,44 +62,12 @@ const Index = () => {
       .catch((error) => {
         Swal.fire({
           icon: "error",
-          title: error.message || "Google Sign-In Error",
+          title: error.message,
           text: "User already registered!",
           confirmButtonColor: "#ED1C24",
         });
       });
   };
-
-
-  // const handleGoogleSingnIn = () => {
-  //   signInWithGoogle()
-  //     .then(() => {
-  //       router.push("/");
-  //       Swal.fire({
-  //         position: "top-end",
-  //         timerProgressBar: true,
-  //         title: "Successfully Login!",
-  //         iconColor: "#ED1C24",
-  //         toast: true,
-  //         icon: "success",
-  //         showClass: {
-  //           popup: "animate__animated animate__fadeInRight",
-  //         },
-  //         hideClass: {
-  //           popup: "animate__animated animate__fadeOutRight",
-  //         },
-  //         showConfirmButton: false,
-  //         timer: 3500,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: error.message,
-  //         text: "User already registered!",
-  //         confirmButtonColor: "#ED1C24",
-  //       });
-  //     });
-  // };
 
   const signUpHandler = async (dataValue) => {
     const role = "user";

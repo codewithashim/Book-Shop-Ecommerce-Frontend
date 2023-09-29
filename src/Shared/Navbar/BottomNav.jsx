@@ -8,15 +8,13 @@ const BottomNav = () => {
     const [on, setOn] = useState(true)
     const { categoryData } = useBook()
     return (
-        <div className='bg-[#ff471e] text-[#000] py-4 md:px-4 border-b md:h-[50px] flex items-center z-80'>
+        <div className='bg-[#ff471e] text-[#fff] py-4 md:px-4 border-b md:h-[50px] flex items-center z-80'>
             <div className="container py-0 h-full mx-auto flex justify-between items-center">
                 <ul className='md:flex h-full items-center gap-5'>
                     <div className="flex md:w-auto w-[100%] justify-between items-center gap-2 ">
-                        <button onClick={() => setOn(!on)} className='px-3 md:hidden block py-1'>
-                            <BsFillGridFill />
-                        </button>
+                
                         <li className='text-sm flex items-center gap-2 dropdown relative'>
-                            <h1 className='flex justify-center gap-4 items-center font-bold text-[1.2rem]'>  <BsFillGridFill className='hidden md:block' /> ALL CATEGORY <FaAngleDown /></h1>
+                            <h1 className='flex justify-center gap-4 items-center font-bold text-[1.2rem]'>  <BsFillGridFill /> ALL CATEGORY <FaAngleDown /></h1>
 
                             <div className="dropdown-menu hidden bg-[white] p-3 text-black absolute w-[300px] top-[20px] md:left-0 left-[-30px] shadow-lg rounded-sm duration-200 shadow-[#00000042] z-100">
                                 <ul>

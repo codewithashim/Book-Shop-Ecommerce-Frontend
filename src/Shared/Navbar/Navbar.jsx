@@ -1,12 +1,14 @@
+import { MainLogo } from '@/src/Assets';
 import { AuthContext } from '@/src/Context/UserContext';
+import useAdmin from '@/src/Hooks/useAdmin';
 import useCommonApiData from '@/src/Hooks/useCommonApiData';
 import { Close, Search } from '@material-ui/icons';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { FaUserAlt, FaMicrosoft, FaPowerOff } from 'react-icons/fa';
+import { FaMicrosoft, FaPowerOff, FaUserAlt } from 'react-icons/fa';
 import { MdOutlineShoppingBag } from 'react-icons/md';
-import useAdmin from '@/src/Hooks/useAdmin';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -18,11 +20,13 @@ const Navbar = () => {
   console.log(isAdmin, 'isAdmin')
 
   return (
-    <nav className="bg-[#ffffff] md:px-4 border-b h-[70px] flex items-center text-black container">
+    <nav className="bg-[#ffffff] md:px-4 border-b py-2 flex items-center text-black container">
       <div className="container flex items-center justify-between mx-auto">
         <div className="flex items-center gap-4">
           <Link className='text-2xl font-bold text-black' href="/">
-            BookShop
+            <Image src={MainLogo} alt="logo" width={130} height={80}
+              className='cursor-pointer hover:scale-105 duration-300 transform'
+            />
           </Link>
           <div className=" md:flex hidden border border-[#c4c4c4] items-center bg-[#281a1a00] p-1 rounded-md gap-2 common-hover">
             <input type="text" className='w-[300px] pl-2 py-1 text-black' placeholder='Search' />
@@ -34,7 +38,7 @@ const Navbar = () => {
           <li className='border-r px-2 h-full border-[gray]'>
             <Link href="/">Home</Link>
           </li>
-          <li className=' px-2 h-full '>
+          <li className='border-r px-2 h-full border-[gray] '>
             <Link href="/product">Shop</Link>
           </li>
           {/* <li className='border-r px-2 h-full border-[gray]'>
@@ -84,7 +88,7 @@ const Navbar = () => {
         </div>
 
         {/* side bar for small device */}
-        <aside className={`${open ? 'left-0 ' : 'left-[-250%]'} duration-300 w-[100vw] overflow-hidden fixed bg-[#172733] h-screen top-0 p-4 text-white z-10`}>
+        <aside className={`${open ? 'left-0 ' : 'left-[-250%]'} duration-300 w-full overflow-hidden fixed bg-[#172733] h-screen top-0 p-4 text-white z-10`}>
           <button className='float-right' onClick={() => setOpen(!open)}>
             <Close className='text-5xl' />
           </button><br />

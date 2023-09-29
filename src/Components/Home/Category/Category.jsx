@@ -53,7 +53,7 @@ const Category = () => {
         <div className='grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-2 mt-6 '>
             {
                 category?.map(itm => (
-                    <Link key={itm?.id} href={`/category_product?CategoryName=${itm?.category}`} className="c-card border border-[#80808057] pb-6 rounded  hover shadow">
+                    <Link key={itm?.id} href={`/category_product?CategoryName=${itm?.category}`} className="c-card border border-[#80808057] pb-6 rounded  cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100">
                         <Image src={itm?.cover} className='md:h-[500px] object-cover h-[200] w-full rounded' width={400} height={500} />
                         <div className="md:px-3 px-2 mt-3">
                             <h3 className="font-[600]  pb-2">{itm?.category?.slice(0, 50)}</h3>

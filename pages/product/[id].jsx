@@ -92,10 +92,13 @@ const ProductDetails = () => {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div className="">
               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
-                <img
-                  src={showImg}
-                  alt={name}
-                />
+                {image && image.length > 0 ? (
+                  <img src={image[0]} alt={name} 
+                    className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
+                  />
+                ) : (
+                  <p>No image available</p>
+                )}
               </div>
               <br />
               <div className='h-[10%]'>
@@ -108,28 +111,26 @@ const ProductDetails = () => {
                   modules={[]}
                   className="mySwiper"
                 >
-                  <SwiperSlide onClick={() => setShowImg('https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a')}>
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a"
-                      className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded' />
-                  </SwiperSlide>
-                  <SwiperSlide onClick={() => setShowImg('https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a')}>
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a"
-                      className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded' />
-                  </SwiperSlide>
-                  <SwiperSlide onClick={() => setShowImg('https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a')}>
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/book-e-commerce-dfef2.appspot.com/o/images%2F1679235368340?alt=media&token=b5736d42-dcb3-4863-876f-1af70b31b53a"
-                      className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded' />
-                  </SwiperSlide>
+                  {
+                    image && image?.map((img, index) => {
+                      return (
+                        <SwiperSlide key={index} onClick={() => setShowImg(img)}>
+                          <img
+                            src={img}
+                            className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100' />
+                        </SwiperSlide>
+                      )
+                    })
+                  }
+
+
                 </Swiper>
               </div>
 
               <div className="flex mt-5 items-center space-x-4">
                 <button
                   onClick={() => addToCart(_id)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded  hover:bg-blue-600 focus:outline-none"
+                  className="px-4 py-2 bg-blue-500 text-white rounded  hover:bg-blue-600 focus:outline-none cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
                 >
                   Add to Cart
                 </button>

@@ -3,7 +3,7 @@ import { Facebook, LinkedIn, WhatsApp } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { FaDiscord } from 'react-icons/fa';
-import MainLogoSite from '@/src/Assets/Logo/NDLogo.png';
+import MainLogoSite from '@/src/Assets/Logo/ND_logo.png';
 import Image from 'next/image';
 
 const Footer = () => {

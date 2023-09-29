@@ -322,6 +322,24 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
                                     </label>
                                 </div>
                             </div>
+                            <div>
+                                <div className="flex flex-wrap gap-4 my-4 justify-center items-center">
+                                    {bookData && bookData?.image?.map((uploadedImageUrl, index) => (
+                                        <div key={index} className="relative flex  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                                            <a
+                                                className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+                                                href="#"
+                                            >
+                                                <img
+                                                    className=""
+                                                    src={uploadedImageUrl}
+                                                    alt="product image"
+                                                />
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
 
                         <Button type="default" htmlType="submit" style={{

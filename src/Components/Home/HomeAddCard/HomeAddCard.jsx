@@ -18,9 +18,8 @@ const HomeAddCard = () => {
                 {
                     bookData && bookData.slice(0, 2).map(book => {
                         return (
-
-                            <div className="cart bg-[#faf0f2] rounded-2xl flex md:flex-row flex-col items-center gap-6 p-6 hover">
-                                <Image src={book?.image[0] || bookImg} className='md:w-[180px] rounded-xl h-[230px]' width={300} height={400} />
+                            <div className="cart bg-[#faf0f2] rounded-2xl flex md:flex-row flex-col items-center gap-6 p-6 cursor-pointer md:hover:animate-pulse md:transition md:duration-500 md:ease-in-out md:transform md:hover:-translate-y-1 md:hover:scale-100 hover shadow">
+                                <Image src={book?.image[0] || bookImg} className='md:w-[180px] rounded-xl md:h-[230px]' width={300} height={400} />
                                 <div className="info">
                                     <div className="flex items-center gap-2">
                                         <BsJournalBookmark className='text-3xl' />
