@@ -4,17 +4,18 @@ import HomeAddBanner from "../HomeAddBanner/HomeAddBanner";
 import HomeBestSeal from "../HomeBestSeal/HomeBestSeal";
 import HomeBestSealSlider from "../HomeBestSealSlider/HomeBestSealSlider";
 import HomeSlider from "../HomeSlider/HomeSlider";
-import bookImg from '@/public/banner 08.png';
 import HomeAddCard from "../HomeAddCard/HomeAddCard";
 import PlayWithWrite from "../PlayWithWrite/PlayWithWrite";
 import AllInOneCategory from "../AllInOne/AllInOneCategory";
+import { BookStoreBannerOne } from "@/src/Assets";
 
 const Home = () => {
+  
   return (
     <section className="container">
       <HomeSlider />
       {/* ====== Home Slider ======= */}
-      <h1 className="text-2xl text-center mt-8 font-semibold">PREMIUM Books Category</h1><br />
+      <h1 className="text-2xl text-center mt-8 font-semibold">Popular Category</h1><br />
       <Category />
 
       <div className="mt-8 grid md:grid-cols-4 grid-cols-1">
@@ -22,7 +23,7 @@ const Home = () => {
           <HomeBestSealSlider />
         </div>
         <div className="">
-          <Image src={bookImg} className="md:w-full w-full md:h-full h-[200px]" width={400} height={500} />
+          <Image src={BookStoreBannerOne} className="md:w-full w-full md:h-full h-full" width={400} height={500} />
         </div>
       </div>
       <div>

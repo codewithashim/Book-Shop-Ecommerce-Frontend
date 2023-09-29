@@ -6,29 +6,44 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from "next/image";
 import {
-  HomeSlider_1,
-  HomeSlider_2,
-  HomeSlider_3,
-  HomeSlider_4
+  BannerOneImage,
+  BannerTowImage,
+  BannerThreeImage,
+  BannerFourImage,
+  BannerFiveImage,
+  BannerSixImage,
+  BannerSevenImage
 } from "@/src/Assets";
 
 const HomeSliderData = [
   {
     id: 1,
-    image: HomeSlider_1,
+    image: BannerOneImage,
   },
   {
     id: 2,
-    image: HomeSlider_2,
+    image: BannerTowImage,
   },
   {
     id: 3,
-    image: HomeSlider_3,
+    image: BannerThreeImage,
   },
   {
     id: 4,
-    image: HomeSlider_4,
-  }
+    image: BannerFourImage,
+  },
+  {
+    id: 5,
+    image: BannerFiveImage,
+  },
+  {
+    id: 6,
+    image: BannerSixImage,
+  },
+  {
+    id: 7,
+    image: BannerSevenImage,
+  },
 ];
 
 const HeroSlider = () => {
@@ -47,7 +62,7 @@ const HeroSlider = () => {
         className="mySwiper heroSlider"
       >
         {HomeSliderData &&
-          HomeSliderData.map((slide) => {
+          HomeSliderData?.map((slide) => {
             return (
               <SwiperSlide key={slide.id}>
                 <Image

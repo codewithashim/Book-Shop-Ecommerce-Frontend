@@ -1,231 +1,15 @@
 import Image from "next/image";
 import React, { useCallback, useRef } from "react";
-import bookImg from '@/public/banner 07.png';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
 import Link from "next/link";
+import useBook from "@/src/Hooks/useBook";
+import bookImg from '@/public/banner 07.png';
 
-const bestSeal = [
-    {
-        id: 0,
-        category: "story books",
-        name: "story books 1",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 1,
-        category: "story books",
-        name: "story books 2",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 2,
-        category: "story books",
-        name: "story books 3",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 3,
-        category: "story books",
-        name: "story books 4",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 4,
-        category: "story books",
-        name: "story books 5",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 5,
-        category: "story books",
-        name: "story books 6",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 7,
-        category: "story books7",
-        name: "story books 5",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-    {
-        id: 8,
-        category: "story books7",
-        name: "story books 5",
-        price: 200,
-        quantity: 1,
-        discountPercentage: "",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ab hic unde nesciunt ex, quo ea, quidem suscipit eum sit inventore dignissimos repellat ut doloribus. Qui veritatis laudantium aliquid mollitia?",
-        language: "english",
-        lavel: "",
-        cover: bookImg,
-        features: [
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-        ],
-        author: "shahin",
-        coupon: [
-            "",
-            ""
-        ],
-        image: [
-            "",
-            "",
-            ""
-        ]
-    },
-]
 
 const AllInOneCategory = () => {
+    const { bookData } = useBook();
     const sliderRef = useRef(null);
     const handlePrev = useCallback(() => {
         if (!sliderRef.current) return;
@@ -236,6 +20,12 @@ const AllInOneCategory = () => {
         if (!sliderRef.current) return;
         sliderRef.current.swiper.slideNext();
     }, []);
+
+    const filterBookData = bookData?.filter((data) => {
+        return data.category === "ALL in One";
+    });
+
+
 
     return (
         <section className=" mx-2 relative h-full">
@@ -259,7 +49,6 @@ const AllInOneCategory = () => {
                     </button>
                 </div>
             </div>
-
             <div className="h-full">
                 <Swiper
                     ref={sliderRef}
@@ -296,15 +85,15 @@ const AllInOneCategory = () => {
                     onSwiper={(swiper) => { }}
                 >
                     <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {bestSeal &&
-                            bestSeal.map((book) => {
+                        {filterBookData &&
+                            filterBookData.map((book) => {
                                 return (
                                     <SwiperSlide className="cursor-grab" key={book.id}>
                                         <Link href={`/product/${book?.id}`}>
-                                            <div className="card bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded">
+                                            <div className="card bg-white pt-2 px-2 pb-6 my-4 mx-2 shadow-lg hover rounded">
                                                 <div className="bg-[#e1e6e9]  ">
                                                     <Image
-                                                        src={book?.cover}
+                                                        src={book?.image[0] || bookImg}
                                                         width={400}
                                                         height={600}
                                                         alt="Description"
@@ -314,7 +103,7 @@ const AllInOneCategory = () => {
 
                                                 <div className="text-left">
                                                     <h4 className="text-lg font-regular mt-3">{book?.name}</h4>
-                                                    <h4 className="text-xl font-semibold text-[#3aafbf]">${book?.price}</h4>
+                                                    <h4 className="text-xl font-semibold text-[#000000]">₹ {book?.price}</h4>
                                                 </div>
                                             </div>
                                         </Link>

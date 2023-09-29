@@ -25,7 +25,6 @@ const CouponSlider = () => {
             offer: '20% flat off on all rides within the city using HDFC Credit Card',
             validTill: '20Dec, 2021',
         },
-        // Add more coupons if needed
     ];
 
     return (
@@ -43,7 +42,7 @@ const CouponSlider = () => {
                                 <h3 className="text-2xl font-semibold mb-4">
                                     {coupon.offer}
                                 </h3>
-                                <div className="flex items-center justify-center space-x-2 mb-6">
+                                <div className="flex items-center justify-center md:flex-row gap-4 flex-col space-x-2 mb-6">
                                     <span
                                         id="cpnCode"
                                         className="border-dashed border text-white px-4 py-2 rounded-l"

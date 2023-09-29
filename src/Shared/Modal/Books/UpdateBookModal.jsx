@@ -153,12 +153,19 @@ const UpdateBookModal = ({ setIsUpdateBookModalOpen, isUpdateBookModalOpen, book
         <Modal title="Update Book" open={isUpdateBookModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}
             footer={null}
             width={800}
+            style={{
+                backgroundColor: '#A9A9A9',
+                borderRadius: '10px',
+                overflow: 'hidden',
+                boxShadow: '0 0 10px 0 #000',
+                
+            }}
         >
             <section className="my-4">
                 <div className="flex flex-col w-full gap-4 mx-auto add-book-form">
                     <form
                         onSubmit={handleSubmit(onSubmit)}
-                        className="add-book-form w-full md:w-[60%] mx-auto flex flex-col gap-4 "
+                        className="add-book-form w-full md:w-full mx-auto flex flex-col gap-4 "
                     >
                         <input
                             placeholder="Book Name"

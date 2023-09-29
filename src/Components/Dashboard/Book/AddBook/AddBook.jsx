@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Input } from 'antd';
 const { TextArea } = Input;
 import { Button } from 'antd';
-import { AuthContext } from '@/src/Context/UserContext';
 import { Select } from 'antd';
 import AddCategoryModal from '../../../../Shared/Modal/Books/AddCategoryModal';
 import AddLavelModal from '@/src/Shared/Modal/Books/AddLavelModal';
@@ -14,7 +13,6 @@ import useBook from '@/src/Hooks/useBook';
 
 
 const AddBook = () => {
-  const { user } = useContext(AuthContext);
   const { handleSubmit } = useForm();
   const { categoryData, levelData, couponData } = useBook()
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
@@ -32,6 +30,7 @@ const AddBook = () => {
   const [features, setFeatures] = useState([]);
   const [cover, setCover] = useState("");
   const [loading, setLoading] = useState(false);
+  const [categoryIds, setCategoryIds] = useState("");
 
   // === coupon ===
   const couponOptions = couponData?.map((coupon) => ({
@@ -60,6 +59,8 @@ const AddBook = () => {
     });
     setImageFiles(updatedFiles);
   };
+
+  console.log(categoryIds, "categoryIds")
 
 
 
@@ -93,7 +94,6 @@ const AddBook = () => {
       }
       setUploadedImageUrls(uploadedUrls);
 
-      console.log(uploadedUrls);
 
       const bookData = {
         category: category,
@@ -185,18 +185,24 @@ const AddBook = () => {
             onChange={(e) => setBookName(e.target.value)}
           />
 
-          <select name="category" id="category"
-            className='border-2 border-gray-300 rounded-md p-2'
-            onChange={(e) => setCategory(e.target.value)}
+          <select
+            name="category"
+            id="category"
+            className="border-2 border-gray-300 rounded-md p-2"
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
           >
             <option value="category">Category</option>
-            {
-              categoryData?.map((category) => (
-                <option value={category.category}
-                  className='border-2 border-gray-300 rounded-md p-4 my-2'
-                >{category.category}</option>
-              ))
-            }
+            {categoryData?.map((category) => (
+              <option
+                key={category._id}
+                value={category.category}
+                className="border-2 border-gray-300 rounded-md p-4 my-2"
+              >
+                {category.category}
+              </option>
+            ))}
           </select>
 
           <Button type="default" onClick={showCategoryModal}>

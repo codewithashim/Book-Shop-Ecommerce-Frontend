@@ -9,7 +9,6 @@ export const getSingelUrl = (id) => basedUrl + `books/get-singel-book/${id}`
 export const updateBooksUrl = (id) => basedUrl + `books/update-book/${id}`
 
 export const deleteBookUrl = (id) => basedUrl + `books/delete/${id}`
-// localhost:8000/api/v1/books/update/65159c967b92511555c707f0
 
 // ======== copoun 
 
@@ -49,4 +48,15 @@ export const updateLevelUrl = (id) => basedUrl + `books/update-level/${id}`
 
 export const deleteLevelUrl = (id) => basedUrl + `books/delete-level/${id}`
 
+// ===== Add to cart =======
 
+export const addToCartUrl = (id) => basedUrl + `cart/add-to-cart/${id}`
+
+
+export const getCartUrl = (email) => basedUrl + `cart/get-cart/${email}`
+
+
+export const removeFromCartUrl = (id) => basedUrl + `cart/remove-from-cart/${id}`
+
+
+export const updateCartUrl = (id) => basedUrl + `cart/update-cart/${id}`

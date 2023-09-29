@@ -1,62 +1,59 @@
+import useBook from '@/src/Hooks/useBook';
 import { Facebook, LinkedIn, WhatsApp } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { FaDiscord } from 'react-icons/fa';
+import MainLogoSite from '@/src/Assets/Logo/NDLogo.png';
+import Image from 'next/image';
 
 const Footer = () => {
+    const { categoryData } = useBook();
+
+
     return (
         <div className='bg-[#D9F3F4] text-[#000] px-4 py-16 grid md:grid-cols-5 gap-4'>
             <div className="">
-                <h2 className="text-3xl font-bold ">LOGO</h2><br />
-                <small className='mt-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur nisi dolor reprehenderit quos aperiam, excepturi facere pariatur!</small>
+                <Link href="/">
+                    <Image src={MainLogoSite} 
+                    width={150}
+                    height={150}
+                    alt="" className='w-[150px] cursor-pointer' />
+                </Link>
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
                     <li className='font-semibold text-lg text-[#000]'>
-                        <Link href="">Fiction</Link>
-                    </li> <br />
-                    <li className='mt-3 font-[300]'>
-                        <Link href="">novel</Link>
+                        <Link href="">Categories</Link>
                     </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="">comic</Link>
-                    </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="">upsc</Link>
-                    </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="">epics</Link>
-                    </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="">ncert</Link>
-                    </li>
-                    <li className='mt-6 font-[300]'>
-                        <Link href="">encyclopedia</Link>
-                    </li>
+                    {
+                        categoryData?.slice(0, 6).map(itm => (
+                            <li key={itm?.id} className='mt-3 font-[300]'>
+                                <Link href={`/category_product?CategoryName=${itm?.category}`}>{itm?.category}</Link>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
                     <li className='font-semibold text-lg text-[#000]'>
-                        <span>Address</span>
-                    </li> <br />
+                        <span>Contact Us</span>
+                    </li>
                     <li className='mt-3 font-[300]'>
-                        <span className="font-[400]">Address</span><br />
-                        <small>123 STREET NAME, CITY, ENGLAND</small>
+                        <span className="font-[400]">Address</span>
+                        <br />
+                        <small>J-2/16 (BASEMENT) Padam chand Marg, Daryaganj</small>
                     </li>
                     <li className='mt-6 font-[300]'>
-                        <span className="font-[400] ">Phone</span><br />
-                        <small>+8801111111111</small>
+                        <span className="font-[400] ">Office / Mobile</span>
+                        <br />
+                        <small>9310406659 / 9910365713</small>
                     </li>
                     <li className='mt-6 font-[300]'>
-                        <span className="font-[400] ">Email</span><br />
-                        <small>MAIL@EXAMPLE.COM</small>
+                        <span className="font-[400] ">Email</span>
+                        <br />
+                        <small>support@nldr.in / outreach@nldr.in</small>
                     </li>
-                    <li className='mt-6 font-[300]'>
-                        <span className="font-[400] ">Working Days/Hours</span><br />
-                        <small>MON - SUN / 9:00AM - 8:00PM</small>
-                    </li>
-
                 </ul>
             </div>
 
@@ -64,7 +61,7 @@ const Footer = () => {
                 <ul>
                     <li className='font-semibold text-lg text-[#000000]'>
                         <Link href="">Follow Us</Link>
-                    </li> <br />
+                    </li>
                     <li className='mt-3 font-[300]'>
                         <Link href="" className='flex items-center gap-2 '>
                             <Facebook className='text-2xl ' /> Facebook

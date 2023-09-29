@@ -7,6 +7,8 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 import banner2 from '@/public/lgBanner2.jpg';
 import banner3 from '@/public/lgBanner3.jpg';
 import Image from 'next/image';
+
+
 const HomeBestSealSlider = () => {
   const HomeSliderData = [
     {

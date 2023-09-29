@@ -1,21 +1,54 @@
 import PreLoaderIcon from "@/src/Assets/Logo/preloader.gif";
 import AuthBannerImage from "./Images/usersignUp.jpeg"
-
-import HomeSlider_1 from "./Slider/Slider_1.png"
-import HomeSlider_2 from "./Slider/Slider_2.png"
-import HomeSlider_3 from "./Slider/Slider_3.png"
-import HomeSlider_4 from "./Slider/Slider_4.png"
-
+import BannerOneImage from "./Banner/banner_01.png"
+import BannerTowImage from "./Banner/banner_02.png"
+import BannerThreeImage from "./Banner/banner_03.png"
+import BannerFourImage from "./Banner/banner_04.png"
+import BannerFiveImage from "./Banner/banner_05.png"
+import BannerSixImage from "./Banner/banner_06.png"
+import BannerSevenImage from "./Banner/banner_07.png"
 import NotFoundImage from "./Images/NotFoundImag.png"
+import BookStoreBannerOne from "./BooksOffer/book-store-01.png"
+import BookStoreBannerTwo from "./BooksOffer/book-store-02.png"
+import BookFareBannerOne from "./BooksOffer/bookfare-banner-01.png"
+import BookFareBannerTwo from "./BooksOffer/bookfare-banner-02.png"
+
+import MainLogo from "./Logo/NDLogo.png"
+
+import BookCategoryOne from "./Books/Book-01.jpg"
+import BookCategoryTwo from "./Books/Book-02.jpg"
+import BookCategoryThree from "./Books/Book-03.jpg"
+import BookCategoryFour from "./Books/Book-04.jpg"
+import BookCategoryFive from "./Books/Book-05.jpg"
+import BookCategorySix from "./Books/Book-06.jpg"
+
+
 
 export {
     PreLoaderIcon,
     AuthBannerImage,
-    HomeSlider_1,
-    HomeSlider_2,
-    HomeSlider_3,
-    HomeSlider_4,
+    NotFoundImage,
 
-    NotFoundImage
+    BannerOneImage,
+    BannerTowImage,
+    BannerThreeImage,
+    BannerFourImage,
+    BannerFiveImage,
+    BannerSixImage,
+    BannerSevenImage,
+
+    BookStoreBannerOne,
+    BookStoreBannerTwo,
+    BookFareBannerOne,
+    BookFareBannerTwo,
+    MainLogo,
+
+    BookCategoryOne,
+    BookCategoryTwo,
+    BookCategoryThree,
+    BookCategoryFour,
+    BookCategoryFive,
+    BookCategorySix,
+    
 }
 
