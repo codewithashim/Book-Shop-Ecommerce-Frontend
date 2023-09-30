@@ -56,6 +56,17 @@ const ProductDetails = () => {
 
   const addToCart = async (id) => {
     const convertPrice = parseInt(price);
+    // Check if the user is logged in
+    if (!user) {
+      // User is not logged in, show an alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Please log in to add the book to your cart',
+        showConfirmButton: true,
+      });
+      return;
+    }
+
     const res = await fetch(addToCartUrl(id), {
       method: 'POST',
       headers: {
@@ -112,7 +123,9 @@ const ProductDetails = () => {
             <div className="">
               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
                 {image && image.length > 0 ? (
-                  <img src={image[0]} alt={name}
+                  <Image src={image[0]} alt={name}
+                    width={300}
+                    height={300}
                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
                   />
                 ) : (
@@ -134,8 +147,11 @@ const ProductDetails = () => {
                     image && image?.map((img, index) => {
                       return (
                         <SwiperSlide key={index} onClick={() => setShowImg(img)}>
-                          <img
+                          <Image
                             src={img}
+                            alt={name}
+                            width={100}
+                            height={100}
                             className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100' />
                         </SwiperSlide>
                       )
@@ -156,15 +172,10 @@ const ProductDetails = () => {
             <div className="md:col-span-2">
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
               <br />
-              {/* <h2 className="text-xl">₹{price} <span className="text-[#FF764B]">({discountPercentage}% OFF)</span> </h2> */}
-              {/* <h2 className="text-xl">
-                ₹{price}{' '}
-                <span className="text-[#FF764B]">({discountPercentage}% OFF)</span>
-              </h2> */}
               <div className='flex items-center gap-4'>
                 <h1 className="text-xl font-bold text-slate-900">
                   {
-                   discountPercentage
+                    discountPercentage
                       ? `₹ ${price - (price * discountPercentage) / 100}`
                       : `₹ ${price}`
                   }

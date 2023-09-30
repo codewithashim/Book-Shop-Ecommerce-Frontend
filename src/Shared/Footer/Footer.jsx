@@ -3,18 +3,18 @@ import { Facebook, LinkedIn, WhatsApp } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { FaDiscord } from 'react-icons/fa';
-import MainLogoSite from '@/src/Assets/Logo/ND_logo.png';
 import Image from 'next/image';
+import { TransParentLogo } from '@/src/Assets';
 
 const Footer = () => {
     const { categoryData } = useBook();
 
 
     return (
-        <div className='bg-[#D9F3F4] text-[#000] px-4 py-16 grid md:grid-cols-5 gap-4'>
+        <div className='bg-[#000] text-[#fff] px-4 py-16 grid md:grid-cols-5 gap-4'>
             <div className="">
                 <Link href="/">
-                    <Image src={MainLogoSite} 
+                    <Image src={TransParentLogo} 
                     width={150}
                     height={150}
                     alt="" className='w-[150px] cursor-pointer' />
@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <Link href="">Categories</Link>
                     </li>
                     {
@@ -36,7 +36,7 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <span>Contact Us</span>
                     </li>
                     <li className='mt-3 font-[300]'>
@@ -87,13 +87,13 @@ const Footer = () => {
             </div>
             <div className="md:mt-[0] mt-6">
                 <ul>
-                    <li className='font-semibold text-lg text-[#000]'>
+                    <li className='font-semibold text-lg text-[#fff]'>
                         <Link href="">Join Us</Link>
                     </li> <br />
                     <li className='mt-3 font-[300]'>
-                        <h2 className='text-2lg font-[500] text-[#0a0606]'>Subscribe to our newsletters</h2>
+                        <h2 className='text-2lg font-[500] text-[#fff]'>Subscribe to our newsletters</h2>
                         <form className='flex items-center border border-[#4c5a5f] bg-[#73c3f58b] overflow-hidden rounded-md mt-3 g'>
-                            <input type="text" className='w-full text-[#000] py-1 px-2 bg-[transparent]' placeholder='email...' /><button className='bg-[#1a7dae]  px-2 py-2'>Subscribe</button>
+                            <input type="text" className='w-full text-[#fff] py-1 px-2 bg-[transparent]' placeholder='email...' /><button className='bg-[#1a7dae]  px-2 py-2'>Subscribe</button>
                         </form>
                     </li>
                 </ul>

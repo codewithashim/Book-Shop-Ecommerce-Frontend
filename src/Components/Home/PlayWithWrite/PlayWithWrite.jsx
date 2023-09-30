@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useCallback, useRef } from "react";
 import bookImg from '@/public/banner 07.png';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
@@ -6,9 +5,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb";
 import Link from "next/link";
 import useBook from "@/src/Hooks/useBook";
+import Skeleton from 'react-loading-skeleton'; // Import the Skeleton component
+import Image from "next/image";
 
 const PlayWithWrite = () => {
-    const { bookData } = useBook()
+    const { bookData, isLoading } = useBook();
 
     const sliderRef = useRef(null);
     const handlePrev = useCallback(() => {
@@ -24,7 +25,6 @@ const PlayWithWrite = () => {
     const filterBookData = bookData?.filter((data) => {
         return data.category === "Play Way Writing";
     });
-
 
     return (
         <section className=" mx-2 relative h-full">
@@ -50,54 +50,62 @@ const PlayWithWrite = () => {
             </div>
 
             <div className="h-full">
-                <Swiper
-                    ref={sliderRef}
-                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                    breakpoints={{
-                        320: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        360: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        480: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        640: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 40,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 50,
-                        },
-                    }}
-                    spaceBetween={50}
-                    slidesPerView={3}
-                    onSlideChange={() => { }}
-                    onSwiper={(swiper) => { }}
-                >
+                {isLoading ? (
+                    // Render loading skeletons while data is loading
                     <div className="grid grid-cols-1 justify-center items-center mx-auto md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {filterBookData &&
-                            filterBookData.map((book) => {
-                                return (
+                        <Skeleton width={400} height={600} />
+                        <Skeleton width={400} height={600} />
+                        <Skeleton width={400} height={600} />
+                    </div>
+                ) : (
+                    // Render actual data when it's available
+                    <Swiper
+                        ref={sliderRef}
+                        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                        breakpoints={{
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            360: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            480: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 40,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 50,
+                            },
+                        }}
+                        spaceBetween={50}
+                        slidesPerView={3}
+                        onSlideChange={() => { }}
+                        onSwiper={(swiper) => { }}
+                    >
+                        <div className="flex justify-center items-center gap-4 w-full">
+                            {filterBookData &&
+                                filterBookData.map((book) => (
                                     <SwiperSlide className="cursor-grab" key={book.id}>
                                         <Link href={`/product/${book?.id}`}>
-                                            <div className="card bg-white pt-2 px-2 pb-6 my-4 mx-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
+                                            <div className="card bg-white pt-2 px-2 pb-6 my-4 mx-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded w-full">
                                                 <div className="bg-[#e1e6e9]  ">
                                                     <Image
                                                         src={book?.image[0] || bookImg}
                                                         width={400}
                                                         height={600}
                                                         alt="Description"
-                                                        className='md:h-[360px] h-[180px] rounded'
+                                                        className='md:h-[360px] h-full w-full rounded'
                                                     />
                                                 </div>
 
@@ -126,10 +134,10 @@ const PlayWithWrite = () => {
                                             </div>
                                         </Link>
                                     </SwiperSlide>
-                                );
-                            })}
-                    </div>
-                </Swiper>
+                                ))}
+                        </div>
+                    </Swiper>
+                )}
             </div>
         </section>
     );

@@ -6,7 +6,7 @@ import BannerThreeImage from "./Banner/banner_03.png"
 import BannerFourImage from "./Banner/banner_04.png"
 import BannerFiveImage from "./Banner/banner_05.png"
 import BannerSixImage from "./Banner/banner_06.png"
-import BannerSevenImage from "./Banner/banner_07.png"
+import BannerSevenImage from "./Banner/banner_03.png"
 import NotFoundImage from "./Images/NotFoundImag.png"
 import BookStoreBannerOne from "./BooksOffer/book-store-01.png"
 import BookStoreBannerTwo from "./BooksOffer/book-store-02.png"
@@ -14,6 +14,8 @@ import BookFareBannerOne from "./BooksOffer/bookfare-banner-01.png"
 import BookFareBannerTwo from "./BooksOffer/bookfare-banner-02.png"
 
 import MainLogo from "./Logo/Nd_logo_main.png"
+
+import TransParentLogo from "./Logo/NDLogo.png"
 
 // == mobile banner
 import MobileBannerOneImage from "./MobileBanner/MobileBanner-(1).png"
@@ -68,7 +70,9 @@ export {
     MobileBannerTwelveImage,
     MobileBannerThirteenImage,
     MobileBannerFourteenImage,
-    
+
+    TransParentLogo
+
 
 }
 

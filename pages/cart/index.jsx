@@ -1,6 +1,7 @@
 import { AuthContext } from '@/src/Context/UserContext';
 import RootLayout from '@/src/Layouts/RootLayout';
 import { getCartUrl, removeFromCartUrl, updateCartUrl, addToCartUrl } from '@/src/Utils/Urls/BooksUrl'; // Assuming you have addToCartUrl
+import Image from 'next/image';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -94,11 +95,11 @@ const CartPage = () => {
     };
 
     const totalPrice = cartData?.reduce((acc, curr) => {
-        return acc + calculateItemPrice(curr.book.price, curr.quantity);
+        return acc + calculateItemPrice(curr?.book?.price, curr?.quantity);
     }, 0);
 
     const totalQuantity = cartData?.reduce((acc, curr) => {
-        return acc + curr.quantity;
+        return acc + curr?.quantity;
     }, 0);
 
     const subtotal = totalPrice - (totalPrice * 10) / 100;
@@ -115,12 +116,15 @@ const CartPage = () => {
                                         {cartData &&
                                             cartData?.map((data) => {
                                                 const { book, _id, image, quantity } = data;
-                                                const itemPrice = calculateItemPrice(book.price, quantity);
+                                                const itemPrice = book ? calculateItemPrice(book.price, quantity) : 0;
+
 
                                                 return (
                                                     <li className="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
                                                         <div className="shrink-0">
-                                                            <img
+                                                            <Image
+                                                                width={100}
+                                                                height={100} // Add this line to specify the height
                                                                 className="h-24 w-24 max-w-full rounded-lg object-cover"
                                                                 src={book?.image[0]}
                                                                 alt={book?.name}
@@ -143,10 +147,11 @@ const CartPage = () => {
                                                                         <div className="mx-auto flex h-8 items-stretch text-gray-600">
                                                                             <button
                                                                                 className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
-                                                                                onClick={() =>
-                                                                                    quantity > 1 &&
-                                                                                    updateCartItemQuantity(_id, quantity - 1)
-                                                                                }
+                                                                                onClick={() => {
+                                                                                    if (quantity > 1) {
+                                                                                        updateCartItemQuantity(_id, quantity - 1);
+                                                                                    }
+                                                                                }}
                                                                             >
                                                                                 -
                                                                             </button>

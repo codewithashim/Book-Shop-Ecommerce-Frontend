@@ -1,4 +1,5 @@
 import useBook from "@/src/Hooks/useBook";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from 'react';
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
@@ -22,8 +23,10 @@ const ManageBook = () => {
                                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
                                     href="#"
                                 >
-                                    <img
-                                        className=""
+                                    <Image
+                                        className="w-full h-full object-cover object-center"
+                                        width={300}
+                                        height={300}
                                         src={image[0] || "https://images.unsplash.com/photo-1622835047087-4b3b0f5b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9va3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"}
                                         alt="product image"
                                     />

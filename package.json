@@ -24,7 +24,9 @@
     "react-hook-form": "^7.46.2",
     "react-icons": "^4.11.0",
     "react-image-magnify": "^2.7.4",
+    "react-loading-skeleton": "^3.3.1",
     "sass": "^1.68.0",
+    "sharp": "^0.32.6",
     "sweetalert2": "^11.7.31",
     "swiper": "^8.4.7"
   },

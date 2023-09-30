@@ -36,7 +36,7 @@ const ProductPage = () => {
     return (
         <RootLayout>
             <ProductSlider /> <br />
-            <div className="flex md:flex-row flex-col gap-2 container">
+            <div className="flex md:flex-row flex-col gap-2 md:container">
                 <div className="md:block hidden p-3 bg-slate-200 rounded h-[75%]">
                     <div>
                         <h2 className="text-lg font-bold"
@@ -66,11 +66,12 @@ const ProductPage = () => {
                             </div>
                         }
                         <button
-                            onClick={clearFilter}
+                            onClick={() => selectedCategory && clearFilter()}
                             className="bg-red-500 text-white mt-4 p-2 rounded-md hover:bg-red-600"
                         >
                             Clear Filter
                         </button>
+
                     </div>
                 </div>
 
@@ -107,11 +108,12 @@ const ProductPage = () => {
                                 </div>
                             ))}
                             <button
-                                onClick={clearFilter}
+                                onClick={() => selectedCategory && clearFilter()}
                                 className="bg-red-500 text-white mt-4 p-2 rounded-md hover:bg-red-600"
                             >
                                 Clear Filter
                             </button>
+
                         </div>
                     </div>
 
@@ -119,14 +121,14 @@ const ProductPage = () => {
                         {currentBooks && currentBooks.map((book) => {
                             return (
                                 <Link key={book?.id} href={`/product/${book?.id}`}>
-                                    <div className="card bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
+                                    <div className="card w-full bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
                                         <div className="bg-[#ebeef0]">
                                             <Image
                                                 src={book?.image[0]}
                                                 width={400}
                                                 height={500}
                                                 alt={book?.name}
-                                                className=" rounded"
+                                                className=" rounded w-full h-full"
                                             />
                                         </div>
 

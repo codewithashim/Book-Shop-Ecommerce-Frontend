@@ -2,6 +2,7 @@ import useBook from '@/src/Hooks/useBook';
 import usePopularCategory from '@/src/Hooks/usePopularCategory';
 import { updatePopularCategoryUrl } from '@/src/Utils/Urls/CategoryUrl';
 import { Button, Modal } from 'antd';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
@@ -181,7 +182,7 @@ const PopularCategoryUpdateModal = ({ isPopularCategoryModalOpen, setIsPopularCa
                                 </div>
                             </div>
                             <div className='flex justify-center items-center gap-4 my-4'>
-                                <img src={popularCategoryImage} alt="category" className="w-20 h-20" />
+                                <Image src={popularCategoryImage} alt="category" className="w-20 h-20" />
                             </div>
                         </div>
 
