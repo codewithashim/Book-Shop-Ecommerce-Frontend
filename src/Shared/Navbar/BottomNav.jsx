@@ -8,7 +8,7 @@ const BottomNav = () => {
     const [on, setOn] = useState(true)
     const { categoryData } = useBook()
     return (
-        <div className='bg-[#ff471e] text-[#fff] py-4 md:px-4 border-b md:h-[50px] flex items-center z-80'>
+        <div className='bg-[#000000] text-[#fff] py-4 md:px-4 border-b md:h-[50px] flex items-center z-80'>
             <div className="container py-0 h-full mx-auto flex justify-between items-center">
                 <ul className='md:flex h-full items-center gap-5'>
                     <div className="flex md:w-auto w-[100%] justify-between items-center gap-2 ">

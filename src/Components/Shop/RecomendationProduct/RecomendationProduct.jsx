@@ -86,7 +86,7 @@ const RecomendationProduct = () => {
                                 return (
                                     <SwiperSlide className="cursor-grab" key={book._id}>
                                         <Link href={`/product/${book?._id}`}>
-                                            <div className="card bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100">
+                                            <div className="card w-full bg-white px-3 py-2 my-4 mx-2 shadow-lg hover rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100">
                                                 <div className="bg-[#e1e6e9]  ">
                                                     <Image
                                                         src={book?.image[0] || NotFoundImage}
@@ -97,11 +97,25 @@ const RecomendationProduct = () => {
                                                     />
                                                 </div>
 
-                                                <div className="text-left">
-                                                    <h4 className="text-lg font-regular mt-3">{book?.name}</h4>
-                                                    <div>
-                                                        <span className="text-3xl font-bold text-slate-900">₹ {book?.price}</span>
-                                                        <span className="text-[1rem] text-slate-900 line-through mx-2">₹ {book?.discountPercentage}</span>
+                                                <div className="pb-4 text-left">
+                                                    <h4 className='font-bold my-2'>
+                                                        {book.category}
+                                                    </h4>
+                                                    <h4 className="text-lg">{book?.name?.slice(0, 28) + ".."}</h4>
+                                                    <div className='flex items-center gap-4'>
+                                                        <h1 className="text-xl font-bold text-slate-900">
+                                                            {
+                                                                book?.discountPercentage
+                                                                    ? `₹ ${book?.price - (book?.price * book?.discountPercentage) / 100}`
+                                                                    : `₹ ${book?.price}`
+                                                            }
+                                                        </h1>
+                                                        <span className="text-sm text-slate-900 line-through mt-1">
+                                                            ₹ {book?.price}
+                                                        </span>
+                                                        <span className='text-[#eec75b]'>
+                                                            {book?.discountPercentage} % off
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

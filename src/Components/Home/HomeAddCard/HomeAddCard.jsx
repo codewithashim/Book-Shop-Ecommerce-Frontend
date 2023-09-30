@@ -12,7 +12,7 @@ const HomeAddCard = () => {
         <>
             <h1 className="text-3xl font-semibold mt-12">Book of the year</h1>
             <p className="text-gray-600 md:w-[700px] mt-2">
-                NND is a leading global provider of e-books for libraries and schools. Our mission is simple: to create the best content for our customers around the world. We are a team of passionate people who work hard, have fun, and are committed to helping our customers succeed.
+                ND is a leading global provider of e-books for libraries and schools. Our mission is simple: to create the best content for our customers around the world. We are a team of passionate people who work hard, have fun, and are committed to helping our customers succeed.
             </p>
             <div className='grid md:grid-cols-2 grid-flow-cols-1 gap-6 py-8'>
                 {

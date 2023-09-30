@@ -101,9 +101,28 @@ const AllInOneCategory = () => {
                                                     />
                                                 </div>
 
-                                                <div className="text-left">
-                                                    <h4 className="text-lg font-regular mt-3">{book?.name}</h4>
-                                                    <h4 className="text-xl font-semibold text-[#000000]">₹ {book?.price}</h4>
+
+                                                <div className="md:p-4 text-left">
+                                                    <h4 className='font-bold my-2'>
+                                                        {book.category}
+                                                    </h4>
+                                                    <h4 className="text-[1rem] font-regular">{book?.name.slice(0, 20)}</h4>
+
+                                                    <div className='flex items-center gap-4'>
+                                                        <h1 className="text-xl font-bold text-slate-900">
+                                                            {
+                                                                book?.discountPercentage
+                                                                    ? `₹ ${book?.price - (book?.price * book?.discountPercentage) / 100}`
+                                                                    : `₹ ${book?.price}`
+                                                            }
+                                                        </h1>
+                                                        <span className="text-sm text-slate-900 line-through mt-1">
+                                                            ₹ {book?.price}
+                                                        </span>
+                                                        <span className='text-[#eec75b]'>
+                                                            {book?.discountPercentage} % off
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </Link>

@@ -103,23 +103,23 @@ const CouponSlider = ({ coupon, applyCoupon }) => {
     const coupons = [
         {
             code: 'STEALDEAL20',
-            offer: '20% flat off on all rides within the city using HDFC Credit Card',
-            validTill: '20Dec, 2021',
+            offer: '20% flat off on all book within the city using HDFC Credit Card',
+            validTill: '20Dec, 2023',
         },
         {
             code: 'STEALDEAL21',
-            offer: '20% flat off on all rides within the city using HDFC Credit Card',
-            validTill: '20Dec, 2021',
+            offer: '20% flat off on all book within the city using HDFC Credit Card',
+            validTill: '20Dec, 2023',
         },
         {
             code: 'STEALDEAL22',
-            offer: '20% flat off on all rides within the city using HDFC Credit Card',
-            validTill: '20Dec, 2021',
+            offer: '20% flat off on all book within the city using HDFC Credit Card',
+            validTill: '20Dec, 2023',
         },
         {
             code: 'STEALDEAL23',
-            offer: '20% flat off on all rides within the city using HDFC Credit Card',
-            validTill: '20Dec, 2021',
+            offer: '20% flat off on all book within the city using HDFC Credit Card',
+            validTill: '20Dec, 2023',
         },
     ];
 

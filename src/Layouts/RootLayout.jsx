@@ -3,16 +3,16 @@ import BottomNav from "../Shared/Navbar/BottomNav";
 import Footer from "../Shared/Footer/Footer";
 
 
-const RootLayout = ({children}) => {
+const RootLayout = ({ children }) => {
     return (
-        <main className="container">
+        <main>
             <Navbar />
             <BottomNav />
-            <section className="my-4">
+            <section className="my-4 container">
                 {children}
             </section>
             <div>
-            <Footer/>
+                <Footer />
             </div>
         </main>
     );

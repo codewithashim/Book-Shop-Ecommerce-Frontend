@@ -91,7 +91,7 @@ const DashboardLayout = ({ children }) => {
               <Link href="/dashboard/category">Category</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<MdLocalOffer />}>
-              <Link href="/dashboard/popular-category/add-popular-category">Popular Category</Link>
+              <Link href="/dashboard/popular-category/manage-popular-category">Popular Category</Link>
             </Menu.Item>
             <Menu.Item key="6" icon={<FaDiceD6 />}>
               <Link href="/dashboard/copuon">Coupon</Link>

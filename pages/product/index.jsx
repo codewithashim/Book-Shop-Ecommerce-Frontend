@@ -117,32 +117,42 @@ const ProductPage = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
                         {currentBooks && currentBooks.map((book) => {
-                            return(
+                            return (
                                 <Link key={book?.id} href={`/product/${book?.id}`}>
-                                <div className="card bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
-                                    <div className="bg-[#ebeef0]">
-                                        <Image
-                                            src={book?.image[0]}
-                                            width={400}
-                                            height={600}
-                                            alt={book?.name}
-                                            className=" rounded"
-                                        />
-                                    </div>
+                                    <div className="card bg-white px-3 pt-2 shadow-lg cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded">
+                                        <div className="bg-[#ebeef0]">
+                                            <Image
+                                                src={book?.image[0]}
+                                                width={400}
+                                                height={500}
+                                                alt={book?.name}
+                                                className=" rounded"
+                                            />
+                                        </div>
 
-                                    <div className="pb-4">
-                                        <h4 className="text-lg mt-3">{book?.name?.slice(0, 28) + ".."}</h4>
-                                        <div className='flex items-center gap-4'>
-                                            <h1 className="text-xl font-bold text-slate-900">
-                                                ₹ {book?.price}
-                                            </h1>
-                                            <span className="text-sm text-slate-900 line-through mt-1">
-                                                ₹ {book?.discountPercentage}
-                                            </span>
+                                        <div className="pb-4">
+                                            <h4 className='font-bold my-2'>
+                                                {book.category}
+                                            </h4>
+                                            <h4 className="text-lg">{book?.name?.slice(0, 28) + ".."}</h4>
+                                            <div className='flex items-center gap-4'>
+                                                <h1 className="text-xl font-bold text-slate-900">
+                                                    {
+                                                        book?.discountPercentage
+                                                            ? `₹ ${book?.price - (book?.price * book?.discountPercentage) / 100}`
+                                                            : `₹ ${book?.price}`
+                                                    }
+                                                </h1>
+                                                <span className="text-sm text-slate-900 line-through mt-1">
+                                                    ₹ {book?.price}
+                                                </span>
+                                                <span className='text-[#eec75b]'>
+                                                    {book?.discountPercentage} % off
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
                             )
                         })}
                     </div>

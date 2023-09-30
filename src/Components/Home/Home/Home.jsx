@@ -15,7 +15,7 @@ const Home = () => {
     <section className="container">
       <HomeSlider />
       {/* ====== Home Slider ======= */}
-      <h1 className="text-2xl text-center mt-8 font-semibold">Popular Categorys</h1><br />
+      <h1 className="text-2xl text-center mt-8 font-semibold">Popular Categories</h1><br />
       <Category />
 
       <div className="mt-8 grid md:grid-cols-4 grid-cols-1">
@@ -27,7 +27,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <h1 className="text-2xl text-start mt-8 font-semibold">Our Best Seal</h1>
+        <h1 className="text-2xl text-start mt-8 font-semibold">Our Best Sellers</h1>
         <HomeBestSeal />
       </div>
       <br />

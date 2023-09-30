@@ -157,10 +157,25 @@ const ProductDetails = () => {
               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
               <br />
               {/* <h2 className="text-xl">₹{price} <span className="text-[#FF764B]">({discountPercentage}% OFF)</span> </h2> */}
-              <h2 className="text-xl">
+              {/* <h2 className="text-xl">
                 ₹{price}{' '}
                 <span className="text-[#FF764B]">({discountPercentage}% OFF)</span>
-              </h2>
+              </h2> */}
+              <div className='flex items-center gap-4'>
+                <h1 className="text-xl font-bold text-slate-900">
+                  {
+                   discountPercentage
+                      ? `₹ ${price - (price * discountPercentage) / 100}`
+                      : `₹ ${price}`
+                  }
+                </h1>
+                <span className="text-sm text-slate-900 line-through mt-1">
+                  ₹ {price}
+                </span>
+                <span className='text-[#eec75b]'>
+                  {discountPercentage} % off
+                </span>
+              </div>
 
 
               <div className="flex  items-center gap-2 mt-2">
@@ -274,126 +289,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-// import React, { useState } from 'react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.min.css';
-
-// const ProductDetails = () => {
-//   const [appliedCoupon, setAppliedCoupon] = useState(null);
-//   const [discountedPrice, setDiscountedPrice] = useState(mainBookData?.price || 0);
-
-//   const applyCoupon = (couponCode) => {
-//     // Find the coupon with the given code
-//     const appliedCoupon = coupon.find((coupon) => coupon.code === couponCode);
-
-//     if (appliedCoupon) {
-//       // Calculate the discounted price
-//       const discountAmount = (parseInt(price) * appliedCoupon.discountPercentage) / 100;
-//       const newPrice = parseInt(price) - discountAmount;
-
-//       setAppliedCoupon(couponCode);
-//       setDiscountedPrice(newPrice);
-//     }
-//   };
-
-//   return (
-//     <RootLayout>
-//       <div className='pb-4 container h-full'>
-//         <div className="container mx-auto mt-3 flex justify-between items-center">
-//           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-//             <div className="">
-//               <div className="img-box shadow rounded bg-[#f1e8e8] p-2 flex justify-center">
-//                 {image && image.length > 0 ? (
-//                   <img src={image[0]} alt={name}
-//                     className='cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-130'
-//                   />
-//                 ) : (
-//                   <p>No image available</p>
-//                 )}
-//               </div>
-//               <br />
-//               <div className='h-[10%]'>
-//                 <Swiper
-//                   slidesPerView={4}
-//                   spaceBetween={10}
-//                   pagination={{
-//                     clickable: true,
-//                   }}
-//                   modules={[]}
-//                   className="mySwiper"
-//                 >
-//                   {
-//                     image && image?.map((img, index) => {
-//                       return (
-//                         <SwiperSlide key={index} onClick={() => setShowImg(img)}>
-//                           <img
-//                             src={img}
-//                             className='bg-[#f1e8e8] border-2 border-[#3aa1b8] p-1 rounded cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100' />
-//                         </SwiperSlide>
-//                       )
-//                     })
-//                   }
-//                 </Swiper>
-//               </div>
-
-//               <div className="flex mt-5 items-center space-x-4">
-//                 <button
-//                   onClick={() => addToCart(_id)}
-//                   className="px-4 py-2 bg-blue-500 text-white rounded  hover:bg-blue-600 focus:outline-none cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
-//                 >
-//                   Add to Cart
-//                 </button>
-//               </div>
-//             </div>
-//             <div className="md:col-span-2">
-//               <h1 className="text-xl font-[500] md:w-[500px]">{name}</h1>
-//               <br />
-//               <h2 className="text-xl">
-//                 ₹{discountedPrice}{' '}
-//                 <span className="text-[#FF764B]">({discountPercentage}% OFF)</span>
-//               </h2>
-
-//               <div className="flex items-center gap-2 mt-2">
-//                 <button
-//                   onClick={() => addToCart(_id)}
-//                   className="px-4 py-2 bg-blue-500 text-white rounded  hover:bg-blue-600 focus:outline-none cursor-pointer hover:animate-pulse transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100"
-//                 >
-//                   Add to Cart
-//                 </button>
-//               </div>
-//               <p className="text-gray-400 text-sm my-4">
-//                 {description?.slice(0, 200)}...
-//               </p>
-//               {/* ... (Previous code) */}
-//               <div className='my-4'>
-//                 {
-//                   coupon && coupon?.map((coupon, index) => {
-//                     return (
-//                       <CouponSlider
-//                         key={index}
-//                         coupon={coupon}
-//                         applyCoupon={applyCoupon}
-//                         appliedCoupon={appliedCoupon}
-//                       />
-//                     )
-//                   })
-//                 }
-//               </div>
-//               {/* ... (Previous code) */}
-//             </div>
-//           </div>
-//         </div>
-
-//         <hr
-//           className='my-4 bg-[#000] '
-//         />
-//         <div>
-//           <RecomendationProduct />
-//         </div>
-//       </div>
-//     </RootLayout>
-//   );
-// };
-
-// export default ProductDetails;

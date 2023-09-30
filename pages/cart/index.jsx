@@ -1,6 +1,6 @@
 import { AuthContext } from '@/src/Context/UserContext';
 import RootLayout from '@/src/Layouts/RootLayout';
-import { getCartUrl, removeFromCartUrl, updateCartUrl } from '@/src/Utils/Urls/BooksUrl';
+import { getCartUrl, removeFromCartUrl, updateCartUrl, addToCartUrl } from '@/src/Utils/Urls/BooksUrl'; // Assuming you have addToCartUrl
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,6 @@ const CartPage = () => {
     const { user } = useContext(AuthContext);
     const [cartData, setCartData] = useState([]);
     const [quantity, setQuantity] = useState(1);
-
 
     useEffect(() => {
         if (user) {
@@ -19,7 +18,6 @@ const CartPage = () => {
             };
             getCartData();
         }
-
     }, [user]);
 
     const removeFromCart = async (id) => {
@@ -40,44 +38,63 @@ const CartPage = () => {
         }
     };
 
-
-    const increaseQuantity = async (id) => {
-        const res = await fetch(updateCartUrl(id), {
-            method: 'patch',
+    const addToCart = async (book) => {
+        const res = await fetch(addToCartUrl(user?.email), {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                quantity: quantity + 1,
+                bookId: book._id,
+                quantity: 1, // You can start with a quantity of 1
             }),
         });
         const data = await res.json();
         console.log(data);
         if (data?.success) {
-            setQuantity(quantity + 1);
+            Swal.fire({
+                icon: 'success',
+                title: 'Item added to cart',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            // You may want to update the cartData here as well
         }
+    };
 
-    }
-
-    const decreaseQuantity = async (id) => {
+    const updateCartItemQuantity = async (id, newQuantity) => {
         const res = await fetch(updateCartUrl(id), {
-            method: 'patch',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                quantity: quantity - 1,
+                quantity: newQuantity,
             }),
         });
         const data = await res.json();
         console.log(data);
         if (data?.success) {
-            setQuantity(quantity - 1);
+            // Update the cartData here
+            const updatedCartData = cartData.map((item) => {
+                if (item._id === id) {
+                    return {
+                        ...item,
+                        quantity: newQuantity,
+                    };
+                }
+                return item;
+            });
+            setCartData(updatedCartData);
         }
-    }
+    };
+
+    const calculateItemPrice = (bookPrice, itemQuantity) => {
+        return bookPrice * itemQuantity;
+    };
 
     const totalPrice = cartData?.reduce((acc, curr) => {
-        return acc + curr.totalPrice;
+        return acc + calculateItemPrice(curr.book.price, curr.quantity);
     }, 0);
 
     const totalQuantity = cartData?.reduce((acc, curr) => {
@@ -95,44 +112,52 @@ const CartPage = () => {
                             <div className="px-4 py-6 sm:px-8 sm:py-10">
                                 <div className="flow-root">
                                     <ul className="-my-8 flex flex-col gap-4">
-                                        {
-                                            cartData && cartData?.map((data) => {
-                                                const { book, _id } = data;
+                                        {cartData &&
+                                            cartData?.map((data) => {
+                                                const { book, _id, image, quantity } = data;
+                                                const itemPrice = calculateItemPrice(book.price, quantity);
+
                                                 return (
                                                     <li className="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
                                                         <div className="shrink-0">
                                                             <img
                                                                 className="h-24 w-24 max-w-full rounded-lg object-cover"
-                                                                src={
-                                                                   "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
-                                                                }
+                                                                src={book?.image[0]}
                                                                 alt={book?.name}
                                                             />
                                                         </div>
                                                         <div className="relative flex flex-1 flex-col justify-between">
-                                                            <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                                                            <div className="sm:col-gap-5 sm:grid sm:grid-cols-2 flex flex-col">
                                                                 <div className="pr-8 sm:pr-5">
                                                                     <p className="text-base font-semibold text-gray-900">
                                                                         {book?.name}
                                                                     </p>
                                                                 </div>
 
-                                                                <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                                                                <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start  sm:justify-end">
                                                                     <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                                                                        <span className="text-xs font-normal text-gray-400">₹</span>{" "} {book?.price}
+                                                                        <span className="text-xs font-normal text-gray-400">₹</span>{" "}
+                                                                        {itemPrice}
                                                                     </p>
                                                                     <div className="sm:order-1">
                                                                         <div className="mx-auto flex h-8 items-stretch text-gray-600">
-                                                                            <button className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
-                                                                                onClick={() => decreaseQuantity(_id)}
+                                                                            <button
+                                                                                className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                                                onClick={() =>
+                                                                                    quantity > 1 &&
+                                                                                    updateCartItemQuantity(_id, quantity - 1)
+                                                                                }
                                                                             >
                                                                                 -
                                                                             </button>
                                                                             <div className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                                                                {data?.quantity}
+                                                                                {quantity}
                                                                             </div>
-                                                                            <button className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
-                                                                                onClick={() => increaseQuantity(_id)}
+                                                                            <button
+                                                                                className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                                                onClick={() =>
+                                                                                    updateCartItemQuantity(_id, quantity + 1)
+                                                                                }
                                                                             >
                                                                                 +
                                                                             </button>
@@ -165,9 +190,8 @@ const CartPage = () => {
                                                             </div>
                                                         </div>
                                                     </li>
-                                                )
-                                            })
-                                        }
+                                                );
+                                            })}
                                     </ul>
                                 </div>
                                 <div className="mt-6 border-t border-b py-2">
@@ -213,7 +237,6 @@ const CartPage = () => {
                     </div>
                 </div>
             </section>
-
         </RootLayout>
     );
 };
